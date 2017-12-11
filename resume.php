@@ -1,6 +1,29 @@
-<?php include('search.php');?>
+<!DOCTYPE>
+
+<!--Подключаем базу данных-->
+<?php include('db.php');?>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--Заголовок сайта-->
+	<title>Практика ДВФУ</title>
+	<!--Стили скачанного меню сайта-->
+	<link rel="stylesheet" href="css/main_menu.css" type="text/css">
+	<!--Стили foundation для разметки и стандартных элементов-->
+	<link rel="stylesheet" href="css/foundation.css">
+	<!--Основные стили на сайте--> 
+	<link rel="stylesheet" href="css/app.css">
+	<!--Стили для главного меню--> 
+	<link rel="stylesheet" href="css/main_menu.css">
+</head>
+
+<header class="header" style="width:100%">
+	
+</header>
 
 <body>
+	<!--Поисковая строка+название+кнопка входа-->
+	<?php include('search.php');?>
 	<!--Меню-->
 	<?php include('menu.php');?>
 		
@@ -9,13 +32,30 @@
 		<!--Меню-->
 		
 		<?php
+		//$stmt = $db->query('SELECT * FROM resume'); ДЛЯ ОДНОЙ ТАБЛИЦЫ
+		//$stmt = $db->query('SELECT * FROM resume  INNER JOIN student ON resume.id_stud = student.id_stud'); ДЛЯ ДВУХ ТАБЛИЦ
+		$stmt = $db->query('SELECT * 
+		FROM resume  
+		LEFT JOIN person ON resume.id_stud = person.id_person
+		LEFT JOIN student ON resume.id_stud = student.id_stud
+		
+		');
+		while ($row = $stmt->fetch())
+		{
+		$skills=$row['skills'];//Навыки
+		$experience=$row['experience'];//Опыт работы
+		$group_student=$row['birthdate'];//Группа   birthdate
+		$name_sudent=$row['lastname'];//ФИО студента
+		$name_sudent.=' ' . $row['name'];
+		$name_sudent.=' ' . $row['fathername'];
+		
+		
 		$first_date='01.01.01';
 		$last_date='15.01.01';
 		
-		$name_sudent='Иванов Иван Иванович';//ФИО студента
-		$group_student='Б8419а';//Группа
-		$experience='3333333';//Опыт работы
-		$skills='4444444';//Навыки
+		
+		
+		
 		
 		echo
 		'
@@ -47,7 +87,7 @@
 		</div>
 		</div>
 		';
-		
+		}
 		?>
 	</div>
 </body>	
