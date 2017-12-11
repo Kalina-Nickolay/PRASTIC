@@ -7,7 +7,7 @@
 	$pswd = $_POST['pass'];
 	
 	//проверка логина
-	$stm = $pdo->prepare('SELECT id_person, username, password FROM person WHERE username=?');
+	$stm = $db->prepare('SELECT id_person, username, password FROM person WHERE username=?');
 	$stm->execute([$login]);
 	$res = $stm->fetch();
 	if (!$res)
@@ -33,7 +33,7 @@
 			$tables = array('admin','student','pterodactyl');
 			
 			foreach ($tables as $nt) {
-				$stmt = $pdo->query('SELECT id FROM '.$nt.' WHERE id = '.$_SESSION['id']); //БАЙДА КАКАЯ-ТО :СССС
+				$stmt = $db->query('SELECT id FROM '.$nt.' WHERE id = '.$_SESSION['id']); //БАЙДА КАКАЯ-ТО :СССС
 				$res = $stmt->fetch();
 				if ($res)				// и здесь тоже :сссс 
 					$role = $nt;

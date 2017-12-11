@@ -1,7 +1,7 @@
 <?php
 //Подключение к базе данных
 	$host = 'localhost';
-    $db   = 'practice';
+    $db   = 'practice_database';
     $user = 'root';
     $pass = '';
     $charset = 'utf8';
@@ -12,6 +12,6 @@
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
-    $pdo = new PDO($dsn, $user, $pass, $opt);
+    $db = new PDO($dsn, $user, $pass, $opt);
 ?>
 
