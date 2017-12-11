@@ -1,7 +1,7 @@
 <?php
 //Подключение к базе данных
 	$host = 'localhost';
-    $db   = 'practice_database';
+    $db   = 'practice_DATABASE';
     $user = 'root';
     $pass = '';
     $charset = 'utf8';
