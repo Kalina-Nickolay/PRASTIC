@@ -49,8 +49,10 @@
 		 
 		</div>
 		</div>
+			<div style="float:left; width:18%; margin-left:55%;"><button type="submit" >Сохранить</button></div>
+			
 		</div>
-		
+	
 		</div>
 		
 		</div>

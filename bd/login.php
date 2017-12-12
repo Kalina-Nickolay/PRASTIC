@@ -7,7 +7,7 @@
 	$pswd = $_POST['pass'];
 	
 	//проверка логина
-	$stm = $db->prepare('SELECT id_person, username, password FROM person WHERE username=?');
+	$stm = $db->prepare('SELECT id_person, name, lastname, fathername, username, password FROM person WHERE username=?');
 	$stm->execute([$login]);
 	$res = $stm->fetch();
 	if (!$res)
@@ -28,6 +28,7 @@
 			$_SESSION['login']=$res['username']; 
 			$_SESSION['password']=$res['password']; 
 			$_SESSION['id']=$res['id_person'];
+			$name_log = $res['name'].$res['lastname'].$res['fathername'];
 			
 			$role='';
 			$tables = array('admin','student','pterodactyl');

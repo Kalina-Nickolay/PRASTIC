@@ -58,6 +58,19 @@
 		
 		
 		}
+		
+		echo
+		'
+		<a class="column small-6 medium-6 large-6">
+		<div class="row" id="trunk">
+		
+		
+		<img style="margin-left:25%; height:150px;" src="images/on.png"></img>
+		<p4 style="margin-left:25%">Добавить воканси</p4>
+		</div>
+		</a>
+		';
+		
 		?>
 <script>
 	function gotolink(event) {
