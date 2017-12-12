@@ -29,7 +29,7 @@
 			<form 
 			action="" method="get">
 				<div style="float:left; width:80%">
-			  <input class="rectangle" name="s" placeholder="Искать здесь..." type="search" ></input></div>
+			  <input class="rectangle1" name="s" placeholder="Искать здесь..." type="search" ></input></div>
 			<div style="float:left; width:18%; margin-left:2%;"><button type="submit" >Поиск</button></div>
 			</form>
 		</div>

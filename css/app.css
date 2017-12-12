@@ -10,8 +10,6 @@
 
 .header_menu {
     background-color: #EF717A;
-	
-	
 }
 
 .breadcrumbs {
@@ -37,17 +35,14 @@ h1.title-page {
 input::-webkit-input-placeholder {
   color: #B6C0A5; 
   font-style: italic; 
-  background: #E0EFCA;
 }
 input:-moz-placeholder {
   color: #B6C0A5; 
   font-style: italic; 
-  background: #E0EFCA;
 }
 input:-ms-input-placeholder {
   color: #B6C0A5; 
   font-style: italic; 
-  background: #E0EFCA;
 }
 button {
 	color: #fff; /* цвет текста */
@@ -164,12 +159,16 @@ li {
   
 .rectangle{
 	border-radius: 0px;
-	border:4;
+	border:4px;
 	background:white;
 	color:black;
-	
-	
-	
+}
+
+.rectangle1{
+	border-radius: 0px;
+	border:4px;
+	background:white;
+	color:black;
 }
    
   *{
