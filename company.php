@@ -8,17 +8,26 @@
 		<!--Меню-->
 		
 		<?php
-		$name_company='2222222';//Название компании:
-		$adds='3333333';//Обязанности:
-		$score='4444444';//Приветствуется:
-		$About_company='55555';
+		$stmt = $db->query('SELECT *
+			FROM pterodactyl
+			
+		');
+		while ($row = $stmt->fetch())
+		{
 		
+		$id = $row['id'];
+		$name_company=$row['name'];//Название компании:
+		$adds=$row['address'];//адрес:
+		$score=$row['sphere'];//Сфера:
+		$score = substr($score, 0, 100).'...';
+		$About_company=$row['about'];//о компании
+		$About_company = substr($About_company, 0, 100).'...';
 		
 		
 		
 		echo
 		'
-		<a class="column small-6 medium-6 large-6"  href="company_detail.php">
+		<a class="column small-6 medium-6 large-6"  href="company_detail.php?id='.$id.'">
 		<div class="row" id="trunk">
 		<div class="column small-4 medium-4 large-4" style="padding:10px;">
 		<br>
@@ -46,7 +55,7 @@
 		</a>
 		';	
 		
-		
+		}
 		?>
 	</div>
 </body>	

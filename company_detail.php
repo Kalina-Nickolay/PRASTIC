@@ -8,30 +8,33 @@
 		<!--Меню-->
 		
 		<?php
-		/*
-		$stmt = $pdo->query('SELECT name FROM person'); //$pdo = new PDO($dsn, $user, $pass, $opt);
-		while ($row = $stmt->fetch()) //разбиваем результат запроса на строки
-		{
-			echo $row['name'] . "\n";
-		}
+		$scetchik =0;
+		$ide=$_GET['id'];
+		$stmt = $db->query('SELECT *
+			FROM pterodactyl
+			left join vacancy on pterodactyl.id = vacancy.id_pter
+		');
 		
-		$gmail = '%gmail.com';
-		$stmt = $pdo->prepare('SELECT email FROM person WHERE email LIKE ?');
-		$stmt->execute(array($gmail));
-		foreach ($stmt as $row)
+		while ($row = $stmt->fetch())
 		{
-			echo $row['email'] . "\n";
-		}
-		*/
 		
-		$name_company='2222222';//Название компании:
-		$adds='3333333';//Обязанности:
-		$score='4444444';//Приветствуется:
-		$About_company='55555';
-		$description='66666';
-		$kind_activity='77777';
+		//$id =$row['id'];
+		//$file = $_SERVER['REQUEST_URI'];
+		//$file = substr($file, 23);	
+		$ideee=$row['id'];
+		if ($ide == $ideee) {
+		$name_company=$row['name'];//Название компании:
+		$adds=$row['address'];//адрес:
+		$kind_activity=$row['sphere'];//Сфера:
+		$description=$row['about'];//о компании
 		$for_invalids='888888';
-		
+		$id =$row['id'];
+		$id_pter=$row['id_pter'];
+		if ($id_pter==$id){
+		$scetchik = $scetchik + 1;
+		}
+		}
+		}
 		echo
 		'
 		<div class="column small-12 medium-12 large-12">
@@ -45,7 +48,7 @@
 		<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:50%">
 		<div style="float: left;"><p3>договор о сотрудничестве</p3></div>
 		<div style="float: right;"><p4 align="right">Вакансий:</p4>
-		<p4>5</p4>
+		<p4>'.$scetchik.'</p4>
 		</div>
 		
 		<br>

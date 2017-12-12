@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 11 2017 г., 10:45
+-- Время создания: Дек 12 2017 г., 09:18
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.1.0
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `practice`
+-- База данных: `practice_database`
 --
 
 -- --------------------------------------------------------
@@ -227,19 +227,20 @@ CREATE TABLE `vacancy` (
   `finish` date NOT NULL COMMENT 'конецц периода',
   `invalid` text NOT NULL COMMENT 'условия для инвалидов',
   `logo` varchar(255) NOT NULL,
-  `places` int(11) NOT NULL COMMENT 'количество мест'
+  `places` int(11) NOT NULL COMMENT 'количество мест',
+  `privet` varchar(1000) NOT NULL COMMENT 'приветствуется'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `vacancy`
 --
 
-INSERT INTO `vacancy` (`id_vac`, `id_pter`, `about`, `practic`, `start`, `finish`, `invalid`, `logo`, `places`) VALUES
-(1, 24, 'Программист 1С', '', '2018-07-25', '2018-08-09', '', '', 5),
-(2, 17, 'Инженер связи', '', '2018-07-25', '2018-08-09', '', '', 3),
-(3, 18, 'Помощник системного администратора', '', '2018-07-25', '2018-08-09', '', '', 3),
-(4, 19, 'Веб-программист', '', '2018-07-25', '2018-08-09', '', '', 5),
-(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', '', 5);
+INSERT INTO `vacancy` (`id_vac`, `id_pter`, `about`, `practic`, `start`, `finish`, `invalid`, `logo`, `places`, `privet`) VALUES
+(1, 24, 'Программист 1С', '', '2018-07-25', '2018-08-09', '', '', 5, ''),
+(2, 17, 'Инженер связи', '', '2018-07-25', '2018-08-09', '', '', 3, ''),
+(3, 18, 'Помощник системного администратора', '', '2018-07-25', '2018-08-09', '', '', 3, ''),
+(4, 19, 'Веб-программист', '', '2018-07-25', '2018-08-09', '', '', 5, ''),
+(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', '', 5, '');
 
 --
 -- Индексы сохранённых таблиц
@@ -349,8 +350,8 @@ ALTER TABLE `pterodactyl`
 -- Ограничения внешнего ключа таблицы `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`id_vac`) REFERENCES `vacancy` (`id_vac`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`id_stud`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`id_stud`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`id_vac`) REFERENCES `vacancy` (`id_vac`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `resume`
@@ -362,8 +363,8 @@ ALTER TABLE `resume`
 -- Ограничения внешнего ключа таблицы `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`studygroup`) REFERENCES `groups` (`id_group`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`id`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`id`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`studygroup`) REFERENCES `groups` (`id_group`) ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `vacancy`
