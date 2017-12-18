@@ -41,8 +41,8 @@
 					<p3>Приветствуется:</p3>
 					<br><p3><? echo $student_welcome ?></p3>
 				</div>
-				<div style="float:left; width:16%; margin-left:35%;"><button type="submit" data-href="vacancyEdit.php" onClick="gotolink(this)">Изменить</button></div>
-				<div style="float:left; width:16%; margin-left:15%;"><button id="<? echo $id_vac?>" class="del_button" type="submit">Удалить</button></div>
+				<div style="float:left; width:16%; margin-left:35%;"><button data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button></div>
+				<div style="float:left; width:16%; margin-left:15%;"><button id="<? echo $id_vac?>" class="del_button">Удалить</button></div>
 			</div>
 		</div>
 		
@@ -88,5 +88,8 @@ $(document).ready(function() {
     });
 });
 
+function gotolink(event) {
+	document.location.href = event.getAttribute('data-href');
+}
 
 </script>
