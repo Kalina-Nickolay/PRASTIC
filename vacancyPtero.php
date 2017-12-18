@@ -16,13 +16,13 @@
 		$last_date=$row['finish'];
 		
 		$id_vac=$row['id_vac'];
-		$name_vacancy=$row['ab'];//Название вокансии:
+		$name_vacancy=$row['ab'];//Название вакансии:
 		$name_company=$row['name'];//Название компании:
 		$student_dities=$row['practic'];//Обязанности:
 		$student_welcome=$row['privet'];//Приветствуется:
 		
 		?>
-		<div class="column small-6 medium-6 large-6">
+		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>" >
 			<div class="row" id="trunk">
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
 					<p4>от <? echo $first_date ?></p4><br>
@@ -42,7 +42,7 @@
 					<br><p3><? echo $student_welcome ?></p3>
 				</div>
 				<div style="float:left; width:16%; margin-left:35%;"><button type="submit" data-href="vacancyEdit.php" onClick="gotolink(this)">Изменить</button></div>
-				<div style="float:left; width:16%; margin-left:15%;"><button type="submit" data-href="vacancyEdit.php" onClick="gotolink(this)">Удалить</button></div>
+				<div style="float:left; width:16%; margin-left:15%;"><button id="<? echo $id_vac?>" class="del_button" type="submit">Удалить</button></div>
 			</div>
 		</div>
 		
@@ -59,17 +59,34 @@
 			</div>
 		</a>
 		
-		
-<script>
-	function gotolink(event) {
-		document.location.href = event.getAttribute('data-href');
-	}
-</script>
-		
-			
-		
-
-		
 	</div>
 </body>	
 	
+		
+<script>
+
+$(document).ready(function() {
+
+	//удаление вакансии
+    $(".del_button").click(function(e) {
+        //e.preventDefault();
+        var clickedID = this.id; 
+        var myData = 'recordToDelete='+ clickedID;
+
+        jQuery.ajax({
+            type: "POST", 
+            url: "bd/del_vac.php", 
+            dataType:"text",
+            data:myData, //post переменные
+            success:function(response){
+            	$('#vac_'+clickedID).fadeOut(0);
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                alert(thrownError);
+            }
+        });
+    });
+});
+
+
+</script>

@@ -6,19 +6,6 @@
 	
 	<!--Контент-->	
 	<div class="row" style="background:#D4D4D3;">
-		<?php
-		
-		$first_date='01.01.01';
-		$last_date='15.01.01';
-		
-		$name_vacancy='1111111';//Название вакансии:
-		$name_company='2222222';//Название компании:
-		$student_dities='3333333';//Обязанности:
-		$student_welcome='4444444';//Приветствуется:
-		$for_invalids='5555';
-
-		?>
-
 		<div class="column small-12 medium-12 large-12">
 			<div class="row" style="padding:5px; margin:5px;">
 				<form enctype="multipart/form-data" action="bd/add_vac.php" method="POST" class="column small-12 medium-12 large-12" style="background:none; padding:10px; padding-right:60px; height:100%">
@@ -92,33 +79,28 @@
 
 <script>
   function handleFileSelect(evt) {
-    var logo = evt.target.files[0]; // выбираем олько что выбранный файл
+    var logo = evt.target.files[0]; // только что выбранный файл
 
-    // Loop through the FileList and render image files as thumbnails.
-    //for (var i = 0, f; f = files[i]; i++) {
+    var reader = new FileReader();
 
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
         return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" id="logo" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
+	        // Render thumbnail.
+	        var span = document.createElement('span');
+	        span.innerHTML = ['<img class="thumb" id="logo" src="', e.target.result,
+	                          '" title="', escape(theFile.name), '"/>'].join('');
 
-          var nodes = document.getElementsByTagName("span");
-
+	        var nodes = document.getElementsByTagName("span");
 			for (var i = 0, len = nodes.length; i != len; ++i) {
-			    nodes[0].parentNode.removeChild(nodes[0]);
+				nodes[0].parentNode.removeChild(nodes[0]);
 			}
-          document.getElementById('list').insertBefore(span, null);
+	        document.getElementById('list').insertBefore(span, null);
         };
       })(logo);
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(logo);
-    //}
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
