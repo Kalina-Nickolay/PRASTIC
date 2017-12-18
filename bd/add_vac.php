@@ -15,7 +15,6 @@
 		   copy($_FILES['logo_url']['tmp_name'], $uploadfile);
 		}
 	}
-	
 
 	$stm = $db->prepare('INSERT INTO vacancy (id_pter, about, practic, start, finish, invalid, logo, places, privet) VALUES (:id, :about, :practic, :start, :finish, :invalid, :logo, :places, :privet)');
 	$stm -> execute(array('id' => $_SESSION['id'], ':about'=>$_POST['about'], ':practic' =>$_POST['practic'], ':start' => $_POST['start'], ':finish' => $_POST['finish'], ':invalid' => $_POST['invalid'], ':logo' => $_FILES['logo_url']['name'], ':places' => $_POST['places'], ':privet' => $_POST['privet']));

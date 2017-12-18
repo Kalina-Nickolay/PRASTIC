@@ -8,7 +8,7 @@
 		
 	<?php
 		$id = $_SESSION['id'];
-		$stmt = $db->query('SELECT vacancy.id_vac as id_vac, vacancy.about as ab, pterodactyl.name as name, vacancy.practic as practic, vacancy.privet as privet, vacancy.start as start, vacancy.finish as finish
+		$stmt = $db->query('SELECT vacancy.id_vac as id_vac, vacancy.about as ab, pterodactyl.name as name, vacancy.practic as practic, vacancy.privet as privet, vacancy.start as start, vacancy.finish as finish, vacancy.logo as logo
 			FROM vacancy INNER JOIN pterodactyl ON vacancy.id_pter=pterodactyl.id WHERE vacancy.id_pter = '.$id);
 		while ($row = $stmt->fetch()) {
 				
@@ -22,12 +22,12 @@
 		$student_welcome=$row['privet'];//Приветствуется:
 		
 		?>
-		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>" >
-			<div class="row" id="trunk">
+		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>">
+			<div class="row" id="trunk" style="height:207px;" >
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
 					<p4>от <? echo $first_date ?></p4><br>
 					<p4>до <? echo $last_date ?></p4><br>
-					<img src="images/7026.jpg"></img><br>
+					<img src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $row['logo']?>"></img><br>
 				</div>
 			
 				<div class="column small-8 medium-8 large-8" style="padding:10px;">
@@ -40,9 +40,13 @@
 					<br>
 					<p3>Приветствуется:</p3>
 					<br><p3><? echo $student_welcome ?></p3>
+					
+						<div class="buttonGroup">
+							<button class="button small" data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button>
+							<button class="button small" id="<? echo $id_vac?>" class="del_button">Удалить</button>
+						</div>
 				</div>
-				<div style="float:left; width:16%; margin-left:35%;"><button data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button></div>
-				<div style="float:left; width:16%; margin-left:15%;"><button id="<? echo $id_vac?>" class="del_button">Удалить</button></div>
+				
 			</div>
 		</div>
 		

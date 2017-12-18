@@ -14,17 +14,20 @@
 		$stm->execute([$id_vac]);
 		$res = $stm->fetch();
 
+		$st = date_create($res['start']);
+		$fn = date_create($res['finish']);
+
 		?>
 		<div class="column small-12 medium-12 large-12">
 			<div class="row" style="margin:5px;">
-				<form enctype="multipart/form-data" action="bd/edit_vac.php" method="POST" class="column small-12 medium-12 large-12" style="background:none; padding:10px; padding-right:60px; height:100%">
+				<form enctype="multipart/form-data" action="bd/edit_vac.php" method="POST" class="column small-12 medium-12 large-12" style="background:none; padding:10px; padding-right:60px; height:100%" onsubmit="return matchDates(this);">
 					<p1>Вакансия</p1>
 					<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:100%">
 					<input style="display:none;" name="id_vac" value="<? echo $id_vac?>"></input>
 					
 					<div class="row" style="padding:0; margin:0;">
 						<div class="column small-7 medium-7 large-7"style="padding:0; margin:0; ">
-						<input class="rectangle" name="about" placeholder="Название вакансии" type="text" value="<? echo $res['about']?>"></input>
+						<input class="rectangle" required name="about" placeholder="Название вакансии" type="text" value="<? echo $res['about']?>"></input>
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
@@ -55,7 +58,7 @@
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
-								<input class="rectangle" name="places" placeholder="Мест" type="text" style="width:100%; margin-left:0;" value="<? echo $res['places']?>"></input>
+								<input class="rectangle" name="places" placeholder="Мест" type="number" min="1" max="100" style="width:100%; margin-left:0;" value="<? echo $res['places']?>"></input>
 							</div>	
 						</div>
 					
@@ -65,7 +68,11 @@
 						<div class="row" style="padding:0; margin:0;">
 							<!--<div style="height:100px; width:80%; background:white; border:3px; float:right;">	
 							</div>-->
-							<output id="list"></output>
+							<output id="list">
+								<span>
+									<img class="thumb" id="logo" src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $res['logo']?>"/>
+	                          	</span>
+							</output>
 						</div>
 						<div class="row" style="padding:0; margin:0;">
 							<div style="float:left; width:100%; margin-top:10px; margin-left:2%;float:right;">
@@ -85,3 +92,46 @@
 	</div>
 </body>	
 	
+
+<script>
+  function handleFileSelect(evt) {
+    var logo = evt.target.files[0]; // только что выбранный файл
+
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+        return function(e) {
+	        // Render thumbnail.
+	        var span = document.createElement('span');
+	        span.innerHTML = ['<img class="thumb" id="logo" src="', e.target.result,
+	                          '" title="', escape(theFile.name), '"/>'].join('');
+
+	        var nodes = document.getElementsByTagName("span");
+			for (var i = 0, len = nodes.length; i != len; ++i) {
+				nodes[0].parentNode.removeChild(nodes[0]);
+			}
+	        document.getElementById('list').insertBefore(span, null);
+        };
+      })(logo);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(logo);
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+function matchDates(form) {
+	var st = new Date(document.getElementsByName("start")[0].value);
+	var fin = new Date(document.getElementsByName("finish")[0].value);
+	var now = new Date();
+	if ((st < now) || (fin < now)) {
+		alert("Неверные даты проведения практики!");
+		return false;
+	} else if (st > fin) {
+		alert("Неверно указаны даты начала и окончания практики!");
+		return false;
+	} else return true;
+}
+</script>

@@ -8,14 +8,14 @@
 	<div class="row" style="background:#D4D4D3;">
 		<div class="column small-12 medium-12 large-12">
 			<div class="row" style="padding:5px; margin:5px;">
-				<form enctype="multipart/form-data" action="bd/add_vac.php" method="POST" class="column small-12 medium-12 large-12" style="background:none; padding:10px; padding-right:60px; height:100%">
+				<form enctype="multipart/form-data" action="bd/add_vac.php" method="POST" class="column small-12 medium-12 large-12" style="background:none; padding:10px; padding-right:60px; height:100%" onsubmit="return matchDates(this);">
 					<p1>Вакансия</p1>
 					<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:100%">
 					
 					
 					<div class="row" style="padding:0; margin:0;">
 						<div class="column small-7 medium-7 large-7"style="padding:0; margin:0; ">
-						<input class="rectangle" name="about" placeholder="Название вакансии" type="text" ></input>
+						<input class="rectangle" name="about" placeholder="Название вакансии" type="text" required></input>
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
@@ -46,7 +46,7 @@
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
-								<input class="rectangle" name="places" placeholder="Мест" type="text" style="width:100%; margin-left:0;"></input>
+								<input class="rectangle" name="places" placeholder="Мест" type="number" min="1" max="100" value="1" style="width:100%; margin-left:0;"></input>
 							</div>	
 						</div>
 					
@@ -104,4 +104,18 @@
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+function matchDates(form) {
+	var st = new Date(document.getElementsByName("start")[0].value);
+	var fin = new Date(document.getElementsByName("finish")[0].value);
+	var now = new Date();
+	if ((st < now) || (fin < now)) {
+		alert("Неверные даты проведения практики!");
+		return false;
+	} else if (st > fin) {
+		alert("Неверно указаны даты начала и окончания практики!");
+		return false;
+	} else return true;
+}
 </script>
