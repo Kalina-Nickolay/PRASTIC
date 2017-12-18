@@ -8,61 +8,149 @@
 		<!--Меню-->
 		
 		<?php
+		if(isset($_POST['vibor'])){
+		$shkola = $_POST['school'];
+		$gruppa = $_POST['studygroup'];
+		$kafedra = $_POST['kaf'];
+		$kyrs = $_POST['course'];
+		$imya = $_POST['fio'];
+		$spec = $_POST['speciality'];
+		};
+		$stmt = $db->query('SELECT distinct school
+			FROM groups	
+			
+		');
 		
 		echo
 		'
+		<form action="" method="post">
 		<div class="column small-12 medium-12 large-12" style="padding-top:10px;">
 		<div style="background:white">
 		<div class="block-absolute">
 		
 		<p2>Школа
-		<select style="width:20%">
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
+		<select name="school"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$school = $row['school'];
+		echo
+		'
+		
+		<option>'.$school.'</option>';
+		}
+		;
+		$stmt = $db->query('SELECT distinct kaf
+			FROM groups	
+			
+		');
+		echo
+		'
 		<select>
 		</p2>
 		
 		<p2>Кафедра
-		<select style="width:20%">
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<select>
-		</p2>
+		<select name="kaf"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$kaf = $row['kaf'];
+		echo
+		'
 		
+		<option >'.$kaf.'</option>';
+		}
+		;
+		echo
+		'
+		<select>
+		</p2>';
+		$stmt = $db->query('SELECT distinct speciality
+			FROM groups		
+		');
+		echo
+		'
 		<p2>Специальность
-		<select style="width:20%">
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
+		<select name="speciality"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$speciality = $row['speciality'];
+		echo
+		'
+		<option >'.$speciality.'</option>';
+		}
+		;
+		echo
+		'
 		<select>
-		</p2>
-		
+		</p2>';
+		$stmt = $db->query('SELECT distinct course
+			FROM groups
+			order by course			
+		');
+		echo
+		'
 		<p2>Курс
-		<select style="width:20%">
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
+		<select name="course"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$course = $row['course'];
+		echo
+		'
+		<option>'.$course.'</option>';
+		}
+		;
+		echo
+		'
 		<select>
-		</p2>
-		
+		</p2>';
+		$stmt = $db->query('SELECT distinct studygroup
+			FROM groups
+			order by studygroup			
+		');
+		echo
+		'
 		<p2>Группа
-		<select style="width:20%">
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
-		<option value="HFFF">HFFF</option>
+		<select name="studygroup"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$studygroup = $row['studygroup'];
+		echo
+		'
+		<option>'.$studygroup.'</option>';
+		}
+		;
+		echo
+		'
 		<select>
-		</p2>
-		
+		</p2>';
+		$stmt = $db->query('SELECT *
+			FROM groups
+			left join person on groups.admin = person.id_person
+			group by admin
+			order by admin			
+		');
+		echo	
+		'
 		<p2>Руководитель
-		<select style="width:20%">
-			<option value="HFFF">HFFF</option>
-			<option value="HFFF">HFFF</option>
-			<option value="HFFF">HFFF</option>
+		<select name="fio"; style="width:20%">
+		<option></option>';
+		while ($row = $stmt->fetch())
+		{
+		$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
+		echo
+		'
+		<option>'.$fio.'</option>';
+		}
+		;
+		echo
+		'
 		<select></p2>
-			
-		<button type="submit">Выбрать</button>
+		</form>	
+		<button type="submit"; name="vibor">Выбрать</button>
 		
 			<table class="linkRow">
 				<thead>
@@ -76,22 +164,47 @@
 						</tr>
 				</thead>
 				<tbody>
-					<tr data-href="group_students.php" onClick="gotolink(this)">
-						<td>Б8419а111</td>
-						<td>4й</td>
-						<td>Прикладная информатика</td>
-						<td>Информатики, математического и компьютерного моделирования</td>
-						<td>ШЕН</td>
-						<td>Кленина Н.В.</td>
-					</tr>
-					<tr>
-						<td>Б8419а113333331999</td>
-						<td>4й</td>
-						<td>Прикладная информатика</td>
-						<td>Информатики, математического и компьютерного моделирования</td>
-						<td>ШЕН</td>
-						<td>Кленина Н.В.</td>
-					</tr>
+					<tr data-href="group_students.php" onClick="gotolink(this)">';
+					$stmt = $db->query('SELECT *
+					FROM groups
+					left join person on groups.admin = person.id_person
+					order by studygroup
+					');
+					while ($row = $stmt->fetch())
+					{
+					$course = $row['course'];
+					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
+					$speciality = $row['speciality'];
+					$studygroup = $row['studygroup'];
+					if((($kyrs == $course)or ($kyrs=='')) and (($imya == $fio)or ($imya=='')) and (($gruppa == $studygroup)or ($gruppa=='')) and (($spec == $speciality) or ($spec==''))){
+						if ($gruppa=='') { echo'
+						<td>'.$studygroup.'</td>';}
+						else { echo'
+						<td>'.$gruppa.'</td>';};
+						if ($kyrs=='') { echo'
+						<td>'.$course.'</td>';}
+						else { echo'
+						<td>'.$kyrs.'</td>';};
+						if ($spec=='') { echo'
+						<td>'.$speciality.'</td>';}
+						else { echo'
+						<td>'.$spec.'</td>';};
+						if ($kafedra=='') { echo'
+						<td>'.$kaf.'</td>';}
+						else { echo'
+						<td>'.$kafedra.'</td>';};
+						if ($shkola=='') { echo'
+						<td>'.$school.'</td>';}
+						else { echo'
+						<td>'.$shkola.'</td>';};
+						if ($imya=='') { echo'
+						<td>'.$fio.'</td>';}
+						else { echo'
+						<td>'.$imya.'</td>';};
+					echo '
+						</tr>';}};
+					echo '	
+					
 				</tbody>
 			</table>
 			
