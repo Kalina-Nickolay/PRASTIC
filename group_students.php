@@ -8,6 +8,12 @@
 		<!--Меню-->
 		
 		<?php
+		$idg = $_GET['id'];
+		$stmt = $db->query('SELECT student.studygroup as idgr, person.lastname as lastname, person.name as name, person.fathername as fathername, student.invalid as invalid, groups.studygroup as studygroup 
+			FROM student
+			left join person on student.id = person.id_person
+			left join groups on student.studygroup = groups.id_group
+		');
 		
 		echo
 		'
@@ -25,15 +31,26 @@
 						<th>ОВЗ</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody>';
+				while ($row = $stmt->fetch())
+				{
+				$idgr = $row['idgr'];
+				$studygroup = $row['studygroup'];
+				$lastname = $row['lastname'];
+				$name = $row['name'];
+				$fathername = $row['fathername'];
+				$invalid = $row['invalid'];
+				if ($idg == $idgr){
+					echo'
 					<tr>
-						<td>1</td>
-						<td>Ивановский</td>
-						<td>Калина</td>
-						<td>Витальевич</td>
-						<td>да</td>
-					</tr>
-					
+						<td>'.$studygroup.'</td>
+						<td>'.$lastname.'</td>
+						<td>'.$name.'</td>
+						<td>'.$fathername.'</td>
+						<td>'.$invalid.'</td>
+					</tr>';
+					};};
+					echo'
 				</tbody>
 			</table>
 		</div></div>
