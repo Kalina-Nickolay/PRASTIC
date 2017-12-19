@@ -13,6 +13,7 @@
 		<?php
 		//$stmt = $db->query('SELECT * FROM resume'); ДЛЯ ОДНОЙ ТАБЛИЦЫ
 		//$stmt = $db->query('SELECT * FROM resume  INNER JOIN student ON resume.id_stud = student.id_stud'); ДЛЯ ДВУХ ТАБЛИЦ
+		
 		$stmt = $db->query('SELECT * 
 			FROM resume 
 			LEFT JOIN person ON resume.id_stud = person.id_person 
@@ -21,6 +22,7 @@
 		');
 		while ($row = $stmt->fetch())
 		{
+		$id=$row['id_stud'];
 		$skills=$row['skills'];//Навыки
 		$experience=$row['experience'];//Опыт работы
 		$group_student=$row['studygroup'];//Группа   birthdate
@@ -55,7 +57,8 @@
 		<p3>Навыки:</p3>
 		<br><p3>'.$skills.'</p3>
 		';
-		if ($role=="RMPT"){
+		if($role=='pterodactyl')
+		{
 			echo'
 			<br>
 			 <button type="submit">Пригласить</button>

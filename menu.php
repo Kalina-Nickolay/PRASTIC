@@ -20,9 +20,9 @@
 			<div class="column small-6 medium-6 large-6"  style="padding:0;">
 				<ul class="menu align-right">
 					<li style="float:right;"><a href="sample.php">Образец</a></li>
-					<li style="float:right;"><a href="group.php">Группы</a></li>
+					<li style="float:right;"><a href="group_admin.php">Группы</a></li>
 					<li style="float:right;"><a href="bid.php">Заявки</a></li>
-					<li style="float:right;"><a href="settings.php">Настройки</a></li>
+					<li style="float:right;"><a href="settingsAdmin.php">Настройки</a></li>
 				</ul>
 			</div>
 		';
@@ -35,7 +35,7 @@
 					<li style="float:right;"><a href="sample.php">Образец</a></li>
 					<li style="float:right;"><a href="resumeStude.php">Резюме</a></li>
 					<li style="float:right;"><a href="bid.php">Заявки</a></li>
-					<li style="float:right;"><a href="settings.php">Настройки</a></li>
+					<li style="float:right;"><a href="settingsStude.php">Настройки</a></li>
 				</ul>
 			</div>
 		
@@ -48,8 +48,8 @@
 				<ul class="menu align-right">
 					<li style="float:right;"><a href="sample.php">Образец</a></li>
 					<li style="float:right;"><a href="vacancyPtero.php">Вакансии</a></li>
-					<li style="float:right;"><a href="bid.php">Заявки</a></li>
-					<li style="float:right;"><a href="settings.php">Настройки</a></li>
+					<li style="float:right;"><a href="bidPtero.php">Заявки</a></li>
+					<li style="float:right;"><a href="settingsPtero.php">Настройки</a></li>
 				</ul>
 			</div>
 		';
