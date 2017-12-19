@@ -54,3 +54,7 @@ form input::-webkit-input-placeholder{
 .current a {
     color: #6fb0b7;
 }
+
+.buttonGroup{
+	margin-top: 5%;
+}

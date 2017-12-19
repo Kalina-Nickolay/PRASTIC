@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 12 2017 г., 09:18
+-- Время создания: Дек 19 2017 г., 08:03
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.1.0
 
@@ -150,15 +150,16 @@ CREATE TABLE `request` (
   `id_stud` int(10) UNSIGNED NOT NULL COMMENT 'студент',
   `stud_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие студента',
   `pter_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие практикодателя',
-  `admin_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие администратора'
+  `admin_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие администратора',
+  `sender` varchar(25) NOT NULL COMMENT '??????'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `request`
 --
 
-INSERT INTO `request` (`id_vac`, `id_stud`, `stud_agree`, `pter_agree`, `admin_agree`) VALUES
-(3, 6, 1, 1, 0);
+INSERT INTO `request` (`id_vac`, `id_stud`, `stud_agree`, `pter_agree`, `admin_agree`, `sender`) VALUES
+(3, 6, 1, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -223,11 +224,11 @@ CREATE TABLE `vacancy` (
   `id_pter` int(10) UNSIGNED NOT NULL,
   `about` varchar(1000) NOT NULL,
   `practic` varchar(255) NOT NULL COMMENT 'вид деятельности',
-  `start` date NOT NULL COMMENT 'начало периода',
-  `finish` date NOT NULL COMMENT 'конецц периода',
+  `start` date DEFAULT NULL COMMENT 'начало периода',
+  `finish` date DEFAULT NULL COMMENT 'конецц периода',
   `invalid` text NOT NULL COMMENT 'условия для инвалидов',
   `logo` varchar(255) NOT NULL,
-  `places` int(11) NOT NULL COMMENT 'количество мест',
+  `places` int(11) NOT NULL DEFAULT '1' COMMENT 'количество мест',
   `privet` varchar(1000) NOT NULL COMMENT 'приветствуется'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -236,11 +237,12 @@ CREATE TABLE `vacancy` (
 --
 
 INSERT INTO `vacancy` (`id_vac`, `id_pter`, `about`, `practic`, `start`, `finish`, `invalid`, `logo`, `places`, `privet`) VALUES
-(1, 24, 'Программист 1С', '', '2018-07-25', '2018-08-09', '', '', 5, ''),
-(2, 17, 'Инженер связи', '', '2018-07-25', '2018-08-09', '', '', 3, ''),
-(3, 18, 'Помощник системного администратора', '', '2018-07-25', '2018-08-09', '', '', 3, ''),
-(4, 19, 'Веб-программист', '', '2018-07-25', '2018-08-09', '', '', 5, ''),
-(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', '', 5, '');
+(1, 24, 'Программист 1С', '', '2018-07-25', '2018-08-09', '', 'logo-new.png', 5, ''),
+(2, 17, 'Инженер связи', '', '2030-12-20', '0000-00-00', '', 'logo_rostelecom_v1.png', 3, ''),
+(3, 18, 'Помощник системного администратора', '', '2018-07-25', '2018-08-09', '', '1688139.png', 3, ''),
+(4, 19, 'Веб-программист', '', '2018-07-25', '2018-08-09', '', 'logo.png', 5, ''),
+(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', 'CORAL_logo1.png', 5, ''),
+(13, 17, 'тестируем лого', '', '0000-00-00', '0000-00-00', '', 'logo_rostelecom_v1.png', 1, '');
 
 --
 -- Индексы сохранённых таблиц
@@ -323,7 +325,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT для таблицы `vacancy`
 --
 ALTER TABLE `vacancy`
-  MODIFY `id_vac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_vac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
