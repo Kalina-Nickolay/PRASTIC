@@ -174,7 +174,7 @@
 					{
 					$idg = $row['id_group'];
 					echo'
-					<tr  data-href="group_students.php?id='.$idg.'" onClick="gotolink(this)">';
+					<tr  data-href="group_students_admin.php?id='.$idg.'" onClick="gotolink(this)">';
 					$admin = $row['admin'];
 					$course = $row['course'];
 					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];

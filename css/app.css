@@ -160,9 +160,13 @@ li {
 .rectangle{
 	border-radius: 0px;
 	border:4px;
+	border-color:grey;
 	background:white;
 	color:black;
-}
+	padding-left:0.5rem;
+	vertical-align:top;
+	border: 2px solid #BABABA;
+	}
 
 .rectangle1{
 	border-radius: 0px;
@@ -170,7 +174,19 @@ li {
 	background:white;
 	color:black;
 }
-   
+  .rectangle2{
+	border-radius: 0px;
+	border:4px;
+	background:white;
+	color:black;
+	  height: 2.4375rem;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+	border: 2px solid #BABABA;
+  /*border-radius: 3px;*/
+  background-color: #fefefe;
+} 
+
   *{
     font-family: Arial;
 }

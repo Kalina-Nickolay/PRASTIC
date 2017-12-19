@@ -821,12 +821,7 @@ textarea {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 2.4375rem;
   margin: 0 0 1rem;
-  padding: 0.5rem;
-  border: 1px solid #cacaca;
-  /*border-radius: 3px;*/
-  background-color: #fefefe;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;
   font-size: 1rem;
@@ -1005,14 +1000,10 @@ legend {
     padding: 0 0.1875rem; }
 
 select {
-  height: 2.4375rem;
   margin: 0 0 1rem;
-  padding: 0.5rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: 1px solid #cacaca;
-  border-radius: 3px;
   background-color: #fefefe;
   font-family: inherit;
   font-size: 1rem;
@@ -1198,7 +1189,7 @@ select {
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #4292D3;
+  background-color: #2ba6cb;
   color: #fefefe; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
