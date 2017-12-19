@@ -69,9 +69,12 @@
 							<!--<div style="height:100px; width:80%; background:white; border:3px; float:right;">	
 							</div>-->
 							<output id="list">
+								<?
+								if ($res['logo'] !='') { ?>
 								<span>
 									<img class="thumb" id="logo" src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $res['logo']?>"/>
 	                          	</span>
+	                          	<? } ?>
 							</output>
 						</div>
 						<div class="row" style="padding:0; margin:0;">

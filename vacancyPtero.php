@@ -27,7 +27,11 @@
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
 					<p4>от <? echo $first_date ?></p4><br>
 					<p4>до <? echo $last_date ?></p4><br>
-					<img src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $row['logo']?>"></img><br>
+					<?
+					if ($row['logo'] !='') {
+						?><img src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $row['logo']?>"></img><br><?
+					}
+					?>
 				</div>
 			
 				<div class="column small-8 medium-8 large-8" style="padding:10px;">
