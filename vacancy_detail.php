@@ -1,14 +1,11 @@
 <?php include('search.php');?>
 
-<body>
+
 	<!--Меню-->
 	<?php include('menu.php');?>
 	
-	
-	
 	<!--Контент-->	
 	<div class="row" style="background:#D4D4D3;">
-		<!--Меню-->
 		
 		<?php
 		$id_vac=$_GET['id'];
@@ -47,56 +44,82 @@
 		$places = $places - $pret;
 		
 		}
-		}		
-		echo
-		
-		'
+		}	
+		?>	
 		
 		<div class="column small-12 medium-12 large-12">
-		<div class="row" style="padding:5px; margin:5px;">
-		<div class="column small-2 medium-2 large-2" style="background:white; padding:10px;">
-		
-		
-		</div>
-		<div class="column small-10 medium-10 large-10" style="background:white; padding:10px; padding-right:60px;">
-		<p5>'.$name_vacancy.'</p5>
-		<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:50%">
-		<div style="float: left;"><p4>'.$name_company.'</p4></div>
-		<div style="float: right;"><p4 align="right">Осталось мест:</p4>
-		<p4>'.$places.'</p4>
-		<p4>Претендентов:</p4>
-		<p4>'.$pret.'</p4>
-		<p4>Период:</p4>
-		<p4>'.$first_date.' - '.$last_date.'</p4>
-		</div>
-		<br>
-		<p4>Описание: </p4>
-		<br>
-		<p3>'.$student_dities.'</p3>
-		<br>
-		<p4>Вид деятельности:</p4>
-		<br>
-		<p3>'.$pterodactyl_sphere.'</p3>
-		<br>
-		<p4>Условия для инвалидов:</p4>
-		<br>
-		<p3>'.$for_invalids.'</p3>
-		<br>
-		';
+			<div class="row" style="padding:5px; margin:5px;">
+				<div class="column small-2 medium-2 large-2" style="background:white; padding:10px;">
+				
+				
+				</div>
+			<div class="column small-10 medium-10 large-10" style="background:white; padding:10px; padding-right:60px;">
+			<p5><? echo $name_vacancy ?></p5>
+			<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:50%">
+			<div style="float: left;"><p4><? echo $name_company ?></p4></div>
 
-		if ($_SESSION['role']=='student') {
-			echo '<div style="float: right;"><button type="submit" align="right">Подать</button></div>';
-		}
+			<div style="float: right;"><p4 align="right">Осталось мест:</p4>
+				<p4><? echo $places ?></p4>
+				<p4>Претендентов:</p4>
+				<p4><? echo $pret ?></p4>
+				<p4>Период:</p4>
+				<p4><? echo $first_date.' - '.$last_date ?></p4>
+			</div>
 
-		echo '
-		</div>
+			<br>
+			<p4>Описание: </p4>
+			<br>
+			<p3><? echo $student_dities ?></p3>
+			<br>
+			<p4>Вид деятельности:</p4>
+			<br>
+			<p3><? echo $pterodactyl_sphere ?></p3>
+			<br>
+			<p4>Условия для инвалидов:</p4>
+			<br>
+			<p3><? echo $for_invalids ?></p3>
+			<br>
+
+			<?
+
+			if ($_SESSION['role']=='student') {
+				?> <div style="float: right;"><button iddiv="box_request" class="popup_request" type="submit" align="right">Подать</button></div> <?
+			} ?>
+
+			</div>
+			
+			</div>
 		
 		</div>
-		
-		</div>
-		';
-		
-		?>
 	</div>
-</body>	
+
+<!-- Всплывающее окно авторизации (форма и скрипт) -->
+<div id="myfond_gris" opendiv=""></div>
+<div id="box_request" class="mymagicoverbox_fenetre">
+	<form name="fr" action="bd/login.php" method="post" action="">
+		<span style="padding:2%;">Заявка</span>
+		<div>
+			<input name="name_vac" type="text">
+		</div>
+		<div class="row" style="float:right"><button type="submit" >Отправить</button></div>
+	</form>
+</div>
+
+<script>
+$(document).ready(function(){
+	$(".popup_request").click(function(){
+		$('#myfond_gris').fadeIn(300);
+		var iddiv = $(this).attr("iddiv");
+		$('#'+iddiv).fadeIn(300);
+		$('#myfond_gris').attr('opendiv',iddiv);
+		return false;
+	});
+	 
+	$('#myfond_gris, .mymagicoverbox_fermer').click(function(){
+		var iddiv = $("#myfond_gris").attr('opendiv');
+		$('#myfond_gris').fadeOut(300);
+		$('#'+iddiv).fadeOut(300);
+	});
+});
+</script>
 	
