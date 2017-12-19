@@ -82,7 +82,13 @@
 		<br>
 		<p3>'.$for_invalids.'</p3>
 		<br>
-		<div style="float: right;"><button type="submit" align="right">Подать</button></div>
+		';
+
+		if ($_SESSION['role']=='student') {
+			echo '<div style="float: right;"><button type="submit" align="right">Подать</button></div>';
+		}
+
+		echo '
 		</div>
 		
 		</div>
