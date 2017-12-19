@@ -8,6 +8,7 @@
 		<!--Меню-->
 		
 		<?php
+		$idadmin=$_SESSION['id'];
 		if(isset($_POST['vibor'])){
 		$shkola = $_POST['school'];
 		$gruppa = $_POST['studygroup'];
@@ -136,16 +137,16 @@
 		echo	
 		'
 		<p2>Руководитель
-		<select name="fio"; style="width:20%">
-		<option></option>';
+		<select name="fio"; style="width:20%">';
 		while ($row = $stmt->fetch())
 		{
-		$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
+		$admin = $row['admin'];
+		if ($admin == $idadmin){
+		$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];};};
 		echo
 		'
 		<option>'.$fio.'</option>';
-		}
-		;
+		
 		echo
 		'
 		<select></p2>
@@ -163,8 +164,7 @@
 							<th>Руководитель</th>
 						</tr>
 				</thead>
-				<tbody>
-					<tr data-href="group_students.php" onClick="gotolink(this)">';
+				<tbody>';
 					$stmt = $db->query('SELECT *
 					FROM groups
 					left join person on groups.admin = person.id_person
@@ -172,11 +172,15 @@
 					');
 					while ($row = $stmt->fetch())
 					{
+					$idg = $row['id_group'];
+					echo'
+					<tr  data-href="group_students.php?id='.$idg.'" onClick="gotolink(this)">';
+					$admin = $row['admin'];
 					$course = $row['course'];
 					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
 					$speciality = $row['speciality'];
 					$studygroup = $row['studygroup'];
-					if((($kyrs == $course)or ($kyrs=='')) and (($imya == $fio)or ($imya=='')) and (($gruppa == $studygroup)or ($gruppa=='')) and (($spec == $speciality) or ($spec==''))){
+					if((($kyrs == $course)or ($kyrs=='')) and (($imya == $fio)or ($imya=='')) and (($gruppa == $studygroup)or ($gruppa=='')) and (($spec == $speciality) or ($spec=='')) and ($idadmin == $admin)){
 						if ($gruppa=='') { echo'
 						<td>'.$studygroup.'</td>';}
 						else { echo'
@@ -197,10 +201,8 @@
 						<td>'.$school.'</td>';}
 						else { echo'
 						<td>'.$shkola.'</td>';};
-						if ($imya=='') { echo'
-						<td>'.$fio.'</td>';}
-						else { echo'
-						<td>'.$imya.'</td>';};
+						echo'
+						<td>'.$fio.'</td>';
 					echo '
 						</tr>';}};
 					echo '	

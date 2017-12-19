@@ -9,10 +9,14 @@
 		
 		<?php
 		$idg = $_GET['id'];
-		$stmt = $db->query('SELECT student.studygroup as idgr, person.lastname as lastname, person.name as name, person.fathername as fathername, student.invalid as invalid, groups.studygroup as studygroup 
+		$i = 1;
+		$stmt = $db->query('SELECT student.studygroup as idgr, person.lastname as lastname, person.name as name, person.fathername as fathername, groups.studygroup as studygroup, pterodactyl.name as place, vacancy.about as vacancy
 			FROM student
 			left join person on student.id = person.id_person
 			left join groups on student.studygroup = groups.id_group
+			left join request on student.id = request.id_stud
+			left join vacancy on request.id_vac = vacancy.id_vac
+			left join pterodactyl on vacancy.id_pter = pterodactyl.id
 		');
 		
 		echo
@@ -28,7 +32,7 @@
 						<th>Фамилия</th>
 						<th>Имя</th>
 						<th>Отчество</th>
-						<th>ОВЗ</th>
+						<th>Место прохождения практики</th>
 					</tr>
 				</thead>
 				<tbody>';
@@ -39,17 +43,19 @@
 				$lastname = $row['lastname'];
 				$name = $row['name'];
 				$fathername = $row['fathername'];
-				$invalid = $row['invalid'];
+				$place = $row['place'];
+				$vacancy = $row['vacancy'];
 				if ($idg == $idgr){
 					echo'
 					<tr>
-						<td>'.$studygroup.'</td>
+						<td>'.$i.'</td>
 						<td>'.$lastname.'</td>
 						<td>'.$name.'</td>
 						<td>'.$fathername.'</td>
-						<td>'.$invalid.'</td>
+						<td>'.'Компания: '.$place. '<br>'.' Вакансия: '.$vacancy.'</td>
 					</tr>';
-					};};
+					$i = $i +1;};
+					};
 					echo'
 				</tbody>
 			</table>
