@@ -46,8 +46,8 @@
 					<br><p3><? echo $student_welcome ?></p3>
 					
 						<div class="buttonGroup">
-							<button class="button small" data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button>
-							<button class="button small" id="<? echo $id_vac?>" class="del_button">Удалить</button>
+							<button data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button>
+							<button id="<? echo $id_vac?>" class="del_button">Удалить</button>
 						</div>
 				</div>
 				
@@ -73,11 +73,16 @@
 		
 <script>
 
+
+function gotolink(event) {
+	document.location.href = event.getAttribute('data-href');
+}
+
 $(document).ready(function() {
 
 	//удаление вакансии
     $(".del_button").click(function(e) {
-        //e.preventDefault();
+        e.preventDefault();
         var clickedID = this.id; 
         var myData = 'recordToDelete='+ clickedID;
 
@@ -96,8 +101,5 @@ $(document).ready(function() {
     });
 });
 
-function gotolink(event) {
-	document.location.href = event.getAttribute('data-href');
-}
 
 </script>

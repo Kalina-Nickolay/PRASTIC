@@ -61,7 +61,7 @@
 		{
 			echo'
 			<br>
-			 <button type="submit">Пригласить</button>
+			 <button iddiv="box_invite" class="popup" type="submit">Пригласить</button>
 			';
 		}
 		echo'
@@ -74,3 +74,33 @@
 	</div>
 </body>	
 	
+<!-- Всплывающее окно авторизации (форма и скрипт) -->
+<div id="myfond_gris" opendiv=""></div>
+<div id="box_invite" class="mymagicoverbox_fenetre">
+	<form name="fr" action="bd/login.php" method="post" action="">
+		<span style="padding:2%;">Приглашение</span>
+		<div>
+			<input name="stud" type="text"> <!-- ЗДЕСЬ ДОЛЖНО БЫТЬ ФИО СТУДЕНТА // ЗАПОЛНЯЕТСЯ АВТОМАТИЧЕСКИ-->
+			<input name="vac" type="text">  <!-- ЗДЕСЬ ДОЛЖЕН БЫТЬ ВЫПАДАЮЩИЙ СПИСОК -> ВАКАНСИИ ТОЛЬКО ТОГО ПРЕДПРИЯТИЯ, КОТОРОЕ ОТПРАВЛЯЕТ ПРИГЛАШЕНИЕ (ТОЛЬКО ТОГО, КТО АВТОРИЗОВАН)-->
+		</div>
+		<div class="row" style="float:right"><button type="submit" >Отправить</button></div>
+	</form>
+</div>
+
+<script>
+$(document).ready(function(){
+	$(".popup").click(function(){
+		$('#myfond_gris').fadeIn(300);
+		var iddiv = $(this).attr("iddiv");
+		$('#'+iddiv).fadeIn(300);
+		$('#myfond_gris').attr('opendiv',iddiv);
+		return false;
+	});
+	 
+	$('#myfond_gris, .mymagicoverbox_fermer').click(function(){
+		var iddiv = $("#myfond_gris").attr('opendiv');
+		$('#myfond_gris').fadeOut(300);
+		$('#'+iddiv).fadeOut(300);
+	});
+});
+</script>
