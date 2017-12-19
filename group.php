@@ -163,8 +163,8 @@
 							<th>Руководитель</th>
 						</tr>
 				</thead>
-				<tbody>
-					<tr data-href="group_students.php" onClick="gotolink(this)">';
+				<tbody>';
+				
 					$stmt = $db->query('SELECT *
 					FROM groups
 					left join person on groups.admin = person.id_person
@@ -172,6 +172,9 @@
 					');
 					while ($row = $stmt->fetch())
 					{
+					$idg = $row['id_group'];
+					echo'
+					<tr  data-href="group_students.php?id='.$idg.'" onClick="gotolink(this)">';
 					$course = $row['course'];
 					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
 					$speciality = $row['speciality'];
