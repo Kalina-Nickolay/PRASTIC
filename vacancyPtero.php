@@ -20,7 +20,11 @@
 		$name_company=$row['name'];//Название компании:
 		$student_dities=$row['practic'];//Обязанности:
 		$student_welcome=$row['privet'];//Приветствуется:
-		
+
+		$stm = $db->prepare("SELECT id_vac FROM request WHERE id_vac=? AND stud_agree=1 AND pter_agree=1 AND admin_agree=1");
+		$stm->execute([$id_vac]);
+		$res = $stm->fetch();
+
 		?>
 		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>">
 			<div class="row" id="trunk" style="height:207px;" >
@@ -46,7 +50,7 @@
 					
 						<div class="buttonGroup">
 							<button data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button>
-							<button id="<? echo $id_vac?>" class="del_button">Удалить</button>
+							<button id="<? echo $id_vac?>" class="del_button" <? if ($res) {?> disabled <? } ?> >Удалить</button>
 						</div>
 				</div>
 				
