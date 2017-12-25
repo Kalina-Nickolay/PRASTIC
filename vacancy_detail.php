@@ -81,9 +81,15 @@
 			<br>
 
 			<?
+			$stm = $db->prepare("SELECT id_vac FROM request WHERE id_vac=? AND id_stud=?");
+			$stm->execute(array($id_vac, $_SESSION['id']));
+			$res = $stm->fetch();
 
 			if ($_SESSION['role']=='student') {
-				?> <div style="float: right;"><button iddiv="box_request" class="popup_request" type="submit" align="right">Подать</button></div> <?
+				?> 
+				<div style="float: right;">
+					<button iddiv="box_request" id="popup_request" class="button primary" type="submit" align="right" <? if ($res) {?> disabled <? }?> >Подать</button>
+				</div> <?
 			} ?>
 
 			</div>
@@ -93,21 +99,21 @@
 		</div>
 	</div>
 
-<!-- Всплывающее окно авторизации (форма и скрипт) -->
+<!-- Всплывающее окно подачи заявки (форма и скрипт) -->
 <div id="myfond_gris" opendiv=""></div>
 <div id="box_request" class="mymagicoverbox_fenetre">
-	<form name="fr" action="bd/login.php" method="post" action="">
+	<form id="send_request" action="" method="POST">
 		<span style="padding:2%;">Заявка</span>
 		<div>
-			<input name="name_vac" type="text">
+			<input name="name_vac" type="text" value="<? echo $name_vacancy ?>" readonly>
 		</div>
-		<div class="row" style="float:right"><button type="submit" >Отправить</button></div>
+		<div class="row" style="float:right"><button type="submit" id="send">Отправить</button></div>
 	</form>
 </div>
 
 <script>
 $(document).ready(function(){
-	$(".popup_request").click(function(){
+	$("#popup_request").click(function(){
 		$('#myfond_gris').fadeIn(300);
 		var iddiv = $(this).attr("iddiv");
 		$('#'+iddiv).fadeIn(300);
@@ -120,6 +126,36 @@ $(document).ready(function(){
 		$('#myfond_gris').fadeOut(300);
 		$('#'+iddiv).fadeOut(300);
 	});
+
+	//отправка заявки
+    $("#send_request").submit(function() {
+
+        var formData = {
+            "id_vac": <?php echo $id_vac ?>, 
+            "id_stud": <?php echo $_SESSION['id'] ?>,
+            "sender": "<?php echo $_SESSION['role'] ?>"
+        };
+				
+        jQuery.ajax({
+        	url: "bd/out_request.php", 
+            type: "POST", 
+            data: 'jsonData=' + JSON.stringify(formData), 
+            success:function(response){
+            	$("#popup_request").attr('disabled',true);
+            	
+            	var iddiv = $("#myfond_gris").attr('opendiv');
+				$('#myfond_gris').fadeOut(300);
+				$('#'+iddiv).fadeOut(300);
+				
+            }
+            /*,
+            error:function (xhr, ajaxOptions, thrownError){
+                alert(thrownError);
+            }*/
+        });
+        return false;
+    });
 });
+
 </script>
 	

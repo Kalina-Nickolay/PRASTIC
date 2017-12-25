@@ -25,8 +25,7 @@
 		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>">
 			<div class="row" id="trunk" style="height:207px;" >
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
-					<p4>от <? echo $first_date ?></p4><br>
-					<p4>до <? echo $last_date ?></p4><br>
+					
 					<?
 					if ($row['logo'] !='') {
 						?><img src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $row['logo']?>"></img><br><?
@@ -61,9 +60,11 @@
 		?>
 		
 		<a href="vacancyAdd.php" class="column small-6 medium-6 large-6">
-			<div class="row" id="trunk">
-				<img style="margin-left:25%; height:150px;" src="images/on.png"></img>
-				<p4 style="margin-left:25%">Добавить вакансию</p4>
+			<div class="row" id="trunk" height="207px">
+				<div class="column small-12 medium-12 large-12">
+					<img src="images/on.png" width="150" style="display: block; margin-left: auto; margin-right: auto"></img>
+					<p4 style="margin-left:25%">Добавить вакансию</p4>
+				</div>
 			</div>
 		</a>
 		
