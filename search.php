@@ -57,7 +57,7 @@
 			<input name="login" type="text" class="authorize" placeholder="Логин" required>
 			<input name="pass" type="password" class="authorize" placeholder="Пароль" required>
 		</div>
-		<div class="row"><span><a href="#" style="float:left; color:#7E8AA0; font-size:16px">Регистрация</a></span></div>
+		<div class="row"><span><a href="registration.php" style="float:left; color:#7E8AA0; font-size:16px">Регистрация</a></span></div>
 		<div class="row" style="float:right"><button type="submit" >Войти</button></div>
 	</form>
 </div>
