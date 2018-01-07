@@ -59,3 +59,97 @@ form input::-webkit-input-placeholder{
 .buttonGroup{
 	margin-top: 5%;
 }
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999 !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+.orange_line{
+	background-color: #EF9C00;
+	width:100%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.orange-line-button{
+	background-color: #EF9C00;
+	width:95%;
+	margin-top: 0;
+	margin-bottom: 0;
+	color:#FAFAFA;
+}
+
+/*нужно поменять*/
+.request-button { 
+	display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    font-family: inherit;
+    padding: 10 10;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+
+    font-family: sans-serif;
+	  /* 1 */
+	  font-size: 100%;
+	  /* 1 */
+	  line-height: 1.15;
+	  /* 1 */
+	  margin: 0;
+
+    margin-bottom:10px; 
+    width:100%; 
+    background:#FAFAFA; color:black
+}
+
+.table-request {
+	border-collapse:collapse;
+	width: 100%;
+	margin:0;
+	background-color: #FAFAFA;
+	text-align: center;
+}
+
+td {
+	padding:5px;
+}
+
+.request {
+	background-color: #FAFAFA !important;
+	border-bottom: 8px solid #d4d4d3;
+}
+
+.request-approved {
+	background-color: #7E8AA0 !important;
+	border-bottom: 8px solid #d4d4d3;
+	color: #FAFAFA;
+}
+
+.request-declined {
+	background-color: #BFC1C2 !important;
+	border-bottom: 8px solid #d4d4d3;
+}
+
+.request-select {
+	background: inherit;
+	text-align: center;
+	color: inherit;
+}
+ 
+input + button {
+  display: none;
+}
+input:checked + button {
+  display: inline;
+}
+

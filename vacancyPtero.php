@@ -20,13 +20,16 @@
 		$name_company=$row['name'];//Название компании:
 		$student_dities=$row['practic'];//Обязанности:
 		$student_welcome=$row['privet'];//Приветствуется:
-		
+
+		$stm = $db->prepare("SELECT id_vac FROM request WHERE id_vac=? AND stud_agree=1 AND pter_agree=1 AND admin_agree=1");
+		$stm->execute([$id_vac]);
+		$res = $stm->fetch();
+
 		?>
 		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>">
 			<div class="row" id="trunk" style="height:207px;" >
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
-					<p4>от <? echo $first_date ?></p4><br>
-					<p4>до <? echo $last_date ?></p4><br>
+					
 					<?
 					if ($row['logo'] !='') {
 						?><img src="files/logo/<? echo $_SESSION['id'] ?>/<? echo $row['logo']?>"></img><br><?
@@ -47,7 +50,7 @@
 					
 						<div class="buttonGroup">
 							<button data-href="vacancyEdit.php?id_vac=<? echo $id_vac?>" onClick="gotolink(this)">Изменить</button>
-							<button id="<? echo $id_vac?>" class="del_button">Удалить</button>
+							<button id="<? echo $id_vac?>" class="del_button" <? if ($res) {?> disabled <? } ?> >Удалить</button>
 						</div>
 				</div>
 				
@@ -61,9 +64,11 @@
 		?>
 		
 		<a href="vacancyAdd.php" class="column small-6 medium-6 large-6">
-			<div class="row" id="trunk">
-				<img style="margin-left:25%; height:150px;" src="images/on.png"></img>
-				<p4 style="margin-left:25%">Добавить вакансию</p4>
+			<div class="row" id="trunk" height="207px">
+				<div class="column small-12 medium-12 large-12">
+					<img src="images/on.png" width="150" style="display: block; margin-left: auto; margin-right: auto"></img>
+					<p4 style="margin-left:25%">Добавить вакансию</p4>
+				</div>
 			</div>
 		</a>
 		
