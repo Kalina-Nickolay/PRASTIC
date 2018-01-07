@@ -26,11 +26,13 @@
 			<p style="font-weight:bold; font-size:x-large;">Практики</p>
 		</div>
 		<div class="column small-8 medium-8 large-8" style="background:WHITE">
-			<form 
-			action="" method="get">
+			<form id="search-form" action="bd/vac_search.php" method="GET">
 				<div style="float:left; width:80%">
-			  <input class="rectangle1" name="s" placeholder="Искать здесь..." type="search" ></input></div>
-			<div style="float:left; width:18%; margin-left:2%;"><button type="submit" >Поиск</button></div>
+			  		<input class="rectangle1" name="search" placeholder="Найти вакансию" type="search" ></input>
+			  	</div>
+				<div style="float:left; width:18%; margin-left:2%;">
+					<button name="search-button" type="submit" >Найти</button>
+				</div>
 			</form>
 		</div>
 		<div class="column small-2 medium-2 large-2" style="background:WHITE; float:right;">

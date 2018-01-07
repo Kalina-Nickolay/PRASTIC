@@ -622,19 +622,19 @@ a {
   color: #2ba6cb;
   text-decoration: none;
   cursor: pointer; }
-  a:hover, a:focus {
-    color: #258faf; }
+  a:hover/*, a:focus*/ {
+    color: /*#258faf*/ #BFC1C2; }
   a img {
     border: 0; }
 
 hr {
   clear: both;
   max-width: 62.5rem;
-  height: 0;
-  margin: 1.25rem auto;
+  height: 3;
+  /*margin: 1.25rem auto;*/
   border-top: 0;
   border-right: 0;
-  border-bottom: 1px solid #cacaca;
+  /*border-bottom: 1px solid #cacaca;*/
   border-left: 0; }
 
 ul,
@@ -819,6 +819,7 @@ ul.no-bullet, ol.no-bullet {
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
   display: block;
+  background-color: #fafafa;
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 1rem;
@@ -836,7 +837,7 @@ textarea {
   textarea:focus {
     outline: none;
     border: 1px solid #8a8a8a;
-    background-color: #fefefe;
+    background-color: #fafafa;
     box-shadow: 0 0 5px #cacaca;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
 
@@ -864,8 +865,9 @@ textarea::placeholder {
 input:disabled, input[readonly],
 textarea:disabled,
 textarea[readonly] {
-  background-color: #e6e6e6;
-  cursor: not-allowed; }
+  background-color: #FAFAFA;
+  color: #BFC1C2;
+  /*cursor: not-allowed;*/ }
 
 [type='submit'],
 [type='button'] {
@@ -880,7 +882,7 @@ input[type='search'] {
 [type='file'],
 [type='checkbox'],
 [type='radio'] {
-  margin: 0 0 1rem; }
+  /*margin: 0 0 1rem; */}
 
 [type='checkbox'] + label,
 [type='radio'] + label {
@@ -1027,7 +1029,7 @@ select {
     box-shadow: 0 0 5px #cacaca;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
   select:disabled {
-    background-color: #e6e6e6;
+    /*background-color: #e6e6e6;*/
     cursor: not-allowed; }
   select::-ms-expand {
     display: none; }
@@ -3285,8 +3287,6 @@ table {
   width: 100%;
   margin-bottom: 1rem;
   border-radius: 3px; }
-  table thead,
-  table tbody,
   table tfoot {
     border: 1px solid #f1f1f1;
     background-color: #fefefe; }
@@ -3295,6 +3295,7 @@ table {
     font-weight: bold; }
   table thead {
     background: #f8f8f8;
+    text-align: center;
     color: #0a0a0a; }
   table tfoot {
     background: #f1f1f1;
@@ -3308,13 +3309,13 @@ table {
   table tfoot td {
     padding: 0.5rem 0.625rem 0.625rem;
     font-weight: bold;
-    text-align: left; }
+    /*text-align: left;*/ }
   table tbody th,
   table tbody td {
     padding: 0.5rem 0.625rem 0.625rem; }
-  table tbody tr:nth-child(even) {
+  /*table tbody tr:nth-child(even) {
     border-bottom: 0;
-    background-color: #f1f1f1; }
+    background-color: #f1f1f1; }*/
   table.unstriped tbody {
     background-color: #fefefe; }
     table.unstriped tbody tr {

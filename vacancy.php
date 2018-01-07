@@ -7,10 +7,18 @@
 	<div class="row" style="background:#D4D4D3;">
 		
 		<?php
-		$stmt = $db->query('SELECT vacancy.id_vac as id_vac, vacancy.id_pter as id_pter, vacancy.about as ab, pterodactyl.name as name, vacancy.practic as practic, vacancy.privet as privet, vacancy.start as start, vacancy.finish as finish, vacancy.logo as logo
+		if (isset($_GET['search'])) {
+			$query = "%".$_GET['search']."%";
+			$stmt = $db->prepare("SELECT vacancy.id_vac as id_vac, vacancy.id_pter as id_pter, vacancy.about as ab, pterodactyl.name as name, vacancy.practic as practic, vacancy.privet as privet, vacancy.start as start, vacancy.finish as finish, vacancy.logo as logo
 			FROM vacancy 
-			inner JOIN pterodactyl ON vacancy.id_pter = pterodactyl.id
-		');
+			inner JOIN pterodactyl ON vacancy.id_pter = pterodactyl.id WHERE LOWER(vacancy.about) LIKE ? OR LOWER(pterodactyl.name) LIKE ? ORDER BY vacancy.id_vac DESC");
+			$stmt -> execute(array($query,$query)); //с включённой эмуляцией, по идее, можно и один раз передать параметр
+		} else {
+			$stmt = $db->query("SELECT vacancy.id_vac as id_vac, vacancy.id_pter as id_pter, vacancy.about as ab, pterodactyl.name as name, vacancy.practic as practic, vacancy.privet as privet, vacancy.start as start, vacancy.finish as finish, vacancy.logo as logo
+			FROM vacancy 
+			inner JOIN pterodactyl ON vacancy.id_pter = pterodactyl.id ORDER BY vacancy.id_vac DESC");
+		}
+		
 		while ($row = $stmt->fetch())
 		{
 				

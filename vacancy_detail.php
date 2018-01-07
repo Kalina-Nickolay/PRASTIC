@@ -88,7 +88,7 @@
 			if ($_SESSION['role']=='student') {
 				?> 
 				<div style="float: right;">
-					<button iddiv="box_request" id="popup_request" class="button primary" type="submit" align="right" <? if ($res) {?> disabled <? }?> >Подать</button>
+					<button iddiv="box_request" id="popup_request" class="button primary" type="submit" align="right" <? if ($res) {?> disabled title="Вы уже подали заявку на данную вакансию."<? }?> >Подать</button>
 				</div> <?
 			} ?>
 

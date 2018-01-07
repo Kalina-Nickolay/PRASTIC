@@ -115,7 +115,7 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
     width: 98%; /* Ширина таблицы */
     background: white; /* Цвет фона таблицы */
     color: black; /* Цвет текста */
-	border: 1px solid black;
+	/*border: 1px solid black;*/
     border-collapse: collapse;
 	margin:1%;
 	height: 1.5em;
@@ -125,7 +125,7 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
 	   height: 1.5em;
      background: white; /* Цвет фона ячеек */
     padding: 5px; /* Поля вокруг текста */
-	border: 1px solid grey; /* Параметры рамки */
+	/*border: 1px solid grey; /* Параметры рамки */
    }
    
    th{
@@ -186,6 +186,36 @@ li {
   /*border-radius: 3px;*/
   background-color: #fefefe;
 } 
+
+.rectangle-select{
+  border-radius: 0px;
+  color:#BFC1C2;
+  background:#fafafa;
+  padding-left:0.5rem;
+  vertical-align:top;
+  border: 2px solid #BFC1C2;
+}
+
+.request-select{
+  border-radius: 0px;
+  /*background:#fafafa;*/
+  padding-left:0.5rem;
+  vertical-align:top;
+  border: 0px solid #BFC1C2;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+  background-origin: content-box;
+  background-position: right -1rem center;
+  background-repeat: no-repeat;
+  background-size: 9px 6px;}
+
+select option{
+  border-radius: 0px;
+  background:#fafafa;
+  color:#BFC1C2;
+  padding-left:0.5rem;
+  vertical-align:top;
+  border: 2px solid #BFC1C2;
+}
 
   *{
     font-family: Arial;
