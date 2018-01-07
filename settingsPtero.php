@@ -81,6 +81,10 @@ if(isset($_POST['update_ptero']))
 		$sphere=$row['sphere'];
 		$about=$row['about'];
 		$iscontract=$row['iscontract'];
+		if(isset($row['contract']))
+			$iscontract='1';
+		else
+			$iscontract='0';
 		$contract=$row['contract'];
 		echo
 		'
@@ -128,8 +132,8 @@ if(isset($_POST['update_ptero']))
 								 
 								<input class="rectangle" style="" name="about" placeholder="О компании" value="'.$about.'" type="text" ></input>
 								 
-								<input class="rectangle" style="" name="iscontract" placeholder="Наличие договора о сотрудничестве с ДВФУ" value="'.$iscontract.'" type="text" ></input>
-								 
+								<input class="rectangle" type="hidden" style="" name="iscontract" placeholder="Наличие договора о сотрудничестве с ДВФУ" value="'.$iscontract.'" type="text" ></input>
+
 								<input class="rectangle" style="" name="contract" placeholder="Ссылка на электронный вариант договора" value="'.$contract.'" type="text" ></input>
 								 
 							</div>
