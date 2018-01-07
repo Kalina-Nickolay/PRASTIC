@@ -22,16 +22,33 @@
 		$FIO= substr(strstr($FIO, ' '), 1, strlen($FIO));
 		$fathername=$FIO;
 
-		
-		//Заменяю данные в таблице RESUME, осталось GROUP, PERSON, 
-		$sql = "UPDATE resume 
-			SET resume.skills = '$skills',
-			resume.experience = '$experience',
-			resume.additional = '$additional'
-			WHERE resume.id_stud = '$id'
-		";
-		$stmt = $db->prepare($sql);
+		$stmt = $db->prepare("SELECT * FROM resume
+			WHERE resume.id_stud = '$id'");
 		$stmt->execute();
+		$result = $stmt->fetchAll();
+		
+		
+		
+		if(!$result)
+			{
+				$sql = "INSERT INTO resume (id_stud, skills,experience,additional) VALUES ('$id', '$skills','$experience','$additional')";
+				
+				$stmt = $db->prepare($sql );
+				$stmt->execute();
+			}
+			else
+			{
+				//Заменяю данные в таблице RESUME, осталось GROUP, PERSON, 
+				$sql = "UPDATE resume 
+					SET resume.skills = '$skills',
+					resume.experience = '$experience',
+					resume.additional = '$additional'
+					WHERE resume.id_stud = '$id'
+				";
+				$stmt = $db->prepare($sql);
+				$stmt->execute();
+			}
+	
 		
 		$sql = "UPDATE person
 			SET person.lastname = '$lastname',
@@ -66,21 +83,23 @@
 	?>
 	<div class="row" style="background:#D4D4D3;">
 		<?php
-			$stmt = $db->query('SELECT * FROM resume 
-			LEFT JOIN person ON resume.id_stud = person.id_person 
-			LEFT JOIN student ON resume.id_stud = student.id
+			$stmt =$db->query('SELECT * FROM person 
+			LEFT JOIN student ON person.id_person = student.id
 			LEFT JOIN groups ON student.studygroup = groups.id_group WHERE person.username = "'.$_SESSION['login'].'"');
-			
-		
 			$row = $stmt->fetch();
-			$id=$row['id'];
-			$skills=$row['skills'];
-			$experience=$row['experience'];
-			$additional=$row['additional'];//Опыт работы
+			$id=$row_1['id'];
 			$group_student=$row['studygroup'];//Группа   birthdate
 			$name_sudent=$row['lastname'];//ФИО студента
 			$name_sudent.=' ' . $row['name'];
 			$name_sudent.=' ' . $row['fathername'];
+			
+			$stmt = $db->query('SELECT * FROM resume 
+			WHERE resume.id_stud = "'.$id.'"');
+			$row = $stmt->fetch();
+			$skills=$row['skills'];
+			$experience=$row['experience'];
+			$additional=$row['additional'];//Опыт работы
+			
 			echo
 			'
 				<div class="column small-12 medium-12 large-12">
@@ -99,11 +118,11 @@
 								';	
 									//Запрос всех неповторяющийхся элементов столбца name таблицы groups
 									$stmt = $db->query('SELECT distinct `studygroup` FROM `groups` ');
-									echo'<option class="rectangle" value="" disabled selected>Группа</option>';
+									echo'<option class="rectangle" value="" disabled selected>'.$group_student.'</option>';
 									while ($row = $stmt->fetch())
 									{				
 										$groups_name = $row['studygroup'];
-										echo'<option class="rectangle" value="'.$groups_name.'" >'.$groups_name.'</option>';
+										echo'<option class="rectangle" value="'.$groups_name.'">'.$groups_name.'</option>';
 									}
 								echo'		
 								</select>
