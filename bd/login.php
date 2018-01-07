@@ -15,14 +15,14 @@
 		?> <script>
 			alert("Неверный логин");
 		</script> <?
-		exit("<html><head><meta http-equiv='Refresh' content='0; URL=".$_SERVER['HTTP_REFERER']."'></head></html>"); 
+		exit("<html><head><meta http-equiv='Refresh' content='0; URL=../vacancy.php'></head></html>");
 	} 
 	else {
 		if ($res['password']!=md5($pswd)) {
 			?> <script>
 				alert("Неверный пароль");
 			</script> <?
-			exit("<html><head><meta http-equiv='Refresh' content='0; URL=".$_SERVER['HTTP_REFERER']."'></head></html>"); 
+			exit("<html><head><meta http-equiv='Refresh' content='0; URL=../vacancy.php'></head></html>");
 		}
 		else {
 			$_SESSION['login']=$res['username']; 
@@ -40,7 +40,7 @@
 					$role = $nt;
 			}
 			$_SESSION['role']=$role;
-			exit("<html><head><meta http-equiv='Refresh' content='0; URL=".$_SERVER['HTTP_REFERER']."'></head></html>"); 
+			exit("<html><head><meta http-equiv='Refresh' content='0; URL=../vacancy.php'></head></html>");
 		}
 	}
 ?>
