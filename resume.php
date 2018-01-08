@@ -38,7 +38,9 @@
 						<br><p3><? echo $skills ?></p3>
 						<?
 						if($role=='pterodactyl') { 
-							$vac = $db->query('SELECT id_vac, about FROM vacancy WHERE id_pter = '.$_SESSION['id']);
+
+							//это для списка вакансий для приглашения - в выпадающем списке выводятся вакансии, на которые ещё есть свободные места (не утверждённые админом)
+							$vac = $db->query("SELECT vacancy.id_vac AS id_vac, vacancy.about AS about FROM vacancy WHERE vacancy.id_pter = ".$_SESSION['id']." AND vacancy.places>(SELECT COUNT(request.id_vac) FROM request WHERE request.admin_agree="1" AND vacancy.id_vac=request.id_vac)");
 
 							$stm = $db->prepare("SELECT id_stud FROM request WHERE id_stud=? AND (admin_agree=1 OR id_vac IN (SELECT id_vac FROM vacancy WHERE id_pter=?)) ");
 							$stm->execute(array($id, $_SESSION['id']));
