@@ -21,8 +21,8 @@
 
 <script src="js/jquery-3.2.1.min.js"></script>
 
-<div class="row">
-		<div class="column small-2 medium-2 large-2" style="background:WHITE">
+<div class="row" style="background:#FAFAFA">
+		<div class="column small-2 medium-2 large-2" >
 			<p id="site_caption">Практики</p>
 		</div>
 		<form class="column small-9 medium-9 large-9" id="search-form" action="vacancy.php" method="GET">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</form>
-		<div class="column small-1 medium-1 large-1" style="background:WHITE; float:right;">
+		<div class="column small-1 medium-1 large-1" style="float:right;">
 			  
 			<?php
 			if($role){
