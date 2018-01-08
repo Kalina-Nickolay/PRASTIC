@@ -1182,7 +1182,7 @@ select {
   vertical-align: middle;
   margin: 0 0 1rem 0;
   font-family: inherit;
-  padding: 0.85em 1em;
+  padding: 6 15;
   -webkit-appearance: none;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -1191,8 +1191,8 @@ select {
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #2ba6cb;
-  color: #fefefe; }
+  background-color: #4292D3;
+  color: #fafafa; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
   .button:hover, .button:focus {
@@ -1825,7 +1825,7 @@ a.button:hover, a.button:focus {
     text-decoration: none;
     display: block;
     /*padding: 0.7rem 1rem; */
-	padding: 10 15;
+	padding: 9 15;
 	}
   .menu input,
   .menu select,
