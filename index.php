@@ -76,7 +76,12 @@ if(isset($_POST['reg']))
 			$upload_path = './files/contract/'; // Директория на сервере, в которую жахнем картинку
 		
 			move_uploaded_file($_FILES['contract_url']['tmp_name'], $upload_path . basename($_FILES['contract_url']['name'])); // Перемещаем файл в желаемую директорию
-			
+			echo
+	'
+		<div class="row">
+				<div class="large-12 medium-12 cell content-error">Регистрация завершена. Логин и пароль высланы на почту</div>
+				</div>
+	';
 		}
 		else
 		if($role=='student')
@@ -108,14 +113,16 @@ if(isset($_POST['reg']))
 				
 			//$message = "Вы зарегистрировались на сайте поиска практик ДВФУ \r\n Ваш логин: " . $login . "\r\n Ваш пароль: " . $new_password ."\r\n Войдите по ссылке index.php";
 			//mail(''.$Email.'', 'RE: Регистрация на сайте поиска практик ДВФУ', $message);
+			
+			echo
+	'
+				<div class="row">
+						<div class="large-12 medium-12 cell content-error">Регистрация завершена. Логин и пароль высланы на почту</div>
+						</div>
+			';
 		}
 	}
-	echo
-	'
-		<div class="row">
-				<div class="large-12 medium-12 cell content-error">Регистрация завершена. Логин и пароль высланы на почту</div>
-				</div>
-	';
+	
 ?>	
 </body>	
 
