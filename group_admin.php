@@ -181,25 +181,27 @@
 							<th>Группа</th>
 							<th>Курс</th>
 							<th>Специальность</th>
-							<th>Кафедра</th>
-							<th>Школа</th>
 							<th>Руководитель</th>
+							<th>Число студентов с утвержденной практикой</th>
 						</tr>
 				</thead>
 				<tbody>';
 					$stmt = $db->query('SELECT *
 					FROM groups
 					left join person on groups.admin = person.id_person
+					left join request on person.id_person = request.id_stud
 					order by studygroup
 					');
 					while ($row = $stmt->fetch())
 					{
+					$schet = 0;
+					$schetgrupp = 0;
 					$idg = $row['id_group'];
+					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
 					echo'
 					<tr  data-href="group_students_admin.php?id='.$idg.'" onClick="gotolink(this)">';
 					$admin = $row['admin'];
 					$course = $row['course'];
-					$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
 					$speciality = $row['speciality'];
 					$studygroup = $row['studygroup'];
 					if((($kyrs == $course)or ($kyrs=='')) and (($imya == $fio)or ($imya=='')) and (($gruppa == $studygroup)or ($gruppa=='')) and (($spec == $speciality) or ($spec=='')) and ($idadmin == $admin)){
@@ -215,18 +217,26 @@
 						<td>'.$speciality.'</td>';}
 						else { echo'
 						<td>'.$spec.'</td>';};
-						if ($kafedra=='') { echo'
-						<td>'.$kaf.'</td>';}
-						else { echo'
-						<td>'.$kafedra.'</td>';};
-						if ($shkola=='') { echo'
-						<td>'.$school.'</td>';}
-						else { echo'
-						<td>'.$shkola.'</td>';};
 						echo'
 						<td>'.$fio.'</td>';
+						$stm = $db->query('SELECT *
+						FROM student
+						left join request on student.id = request.id_stud
+						');
+						while ($row = $stm->fetch())
+						{ $adagr = $row['admin_agree'];
+						$studygrou = $row['studygroup'];
+						if ($studygrou == $idg) {
+							$schetgrupp = $schetgrupp + 1;
+							if ($adagr == 1 ) {
+							$schet = $schet + 1;
+							};
+							};}
+						echo'
+						<td>'.$schet.' из '.$schetgrupp.'</td>';
 					echo '
-						</tr>';}};
+						</tr>';}
+						};
 					echo '	
 					
 				</tbody>
