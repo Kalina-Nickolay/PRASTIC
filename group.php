@@ -25,11 +25,12 @@
 		'
 		<form action="" method="post">
 		<div class="column small-12 medium-12 large-12" style="padding-top:10px;">
-		<div style="background:white">
+		<div style="background: #FFFFFF">
 		<div class="block-absolute">
-		
-		<p2>Школа
-		<select name="school"; style="width:20%">
+		<div class="row">
+		<div class="column small-2 medium-2 large-2">
+		<p2 style="float: right;">Школа
+		<select class="group-select" name="school" style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -39,7 +40,7 @@
 		
 		<option>'.$school.'</option>';
 		}
-		;
+		
 		$stmt = $db->query('SELECT distinct kaf
 			FROM groups	
 			
@@ -48,9 +49,10 @@
 		'
 		<select>
 		</p2>
-		
-		<p2>Кафедра
-		<select name="kaf"; style="width:20%">
+		</div>
+		<div class="column small-4 medium-4 large-4">
+		<p2 style="float: right;">Кафедра
+		<select class="group-select" name="kaf"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -70,8 +72,10 @@
 		');
 		echo
 		'
-		<p2>Специальность
-		<select name="speciality"; style="width:20%">
+		</div>
+		<div class="column small-4 medium-4 large-4">
+		<p2 style="float: right;">Специальность
+		<select class="group-select" name="speciality"; style="width:57%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -91,8 +95,12 @@
 		');
 		echo
 		'
-		<p2>Курс
-		<select name="course"; style="width:20%">
+		</div>
+		</div>
+
+		<div class="row">
+		<div class="column small-2 medium-2 large-2">
+		<p2 style="padding-left: 10;">Курс <select class="group-select" name="course"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -112,8 +120,9 @@
 		');
 		echo
 		'
-		<p2>Группа
-		<select name="studygroup"; style="width:20%">
+		</div>
+		<div class="column small-4 medium-4 large-4">
+		<p2 style="">Группа <select class="group-select" name="studygroup"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -135,8 +144,9 @@
 		');
 		echo	
 		'
-		<p2>Руководитель
-		<select name="fio"; style="width:20%">
+		</div>
+		<div class="column small-4 medium-4 large-4">
+		<p2 style="float: right;">Руководитель <select class="group-select" name="fio"; style="width:57%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -149,8 +159,12 @@
 		echo
 		'
 		<select></p2>
+		</div>
 		</form>	
-		<button type="submit"; name="vibor">Выбрать</button>
+			<div class="column small-2 medium-2 large-2">
+			<button class="button" type="submit"; name="vibor" >Выбрать</button>
+			</div>
+		</div>
 		
 			<table class="linkRow">
 				<thead>

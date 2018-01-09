@@ -21,30 +21,30 @@
 
 <script src="js/jquery-3.2.1.min.js"></script>
 
-<div class="row" style="margin-top:10px;">
-		<div class="column small-2 medium-2 large-2" style="background:WHITE">
-			<p style="font-weight:bold; font-size:x-large;">Практики</p>
+<div class="row" style="background:#FAFAFA">
+		<div class="column small-2 medium-2 large-2" >
+			<p id="site_caption">Практики</p>
 		</div>
-		<div class="column small-8 medium-8 large-8" style="background:WHITE">
-			<form id="search-form" action="bd/vac_search.php" method="GET">
-				<div style="float:left; width:80%">
-			  		<input class="rectangle1" name="search" placeholder="Найти вакансию" type="search" ></input>
+		<form class="column small-9 medium-9 large-9" id="search-form" action="vacancy.php" method="GET">
+			<div class="row">
+				<div class="column small-9 medium-9 large-9" >
+			  		<input class="rectangle" name="search" placeholder="Найти вакансию" type="search" style="font-size: 20px; height:34px; margin:10 0"></input>
 			  	</div>
-				<div style="float:left; width:18%; margin-left:2%;">
-					<button name="search-button" type="submit" >Найти</button>
+				<div class="column small-3 medium-3 large-3" >
+					<button class="button expanded" name="search-button" type="submit" style="font-size: 20px; margin:10px 0">Найти</button>
 				</div>
-			</form>
-		</div>
-		<div class="column small-2 medium-2 large-2" style="background:WHITE; float:right;">
+			</div>
+		</form>
+		<div class="column small-1 medium-1 large-1" style="float:right;">
 			  
 			<?php
 			if($role){
 				echo
 				'<form action="bd/logout.php" method="POST">
-					<button type="submit" style="float:right; background:white; color: black;">Выйти</button>
+					<button type="submit" class="clear button" id="cab_button">Выйти</button>
 				</form>' ;
 			} else
-				echo '<button type="submit" class="popup" iddiv="box_1" style="float:right; background:white; color: black;">Войти</button>';
+				echo '<button type="submit" class="popup clear button" iddiv="box_1" id="cab_button">Войти</button>';
 			?>
 			
 		</div>
@@ -56,8 +56,8 @@
 	<form name="fr" action="bd/login.php" method="post" action="">
 		<span style="padding:2%;">Вход</span>
 		<div>
-			<input name="login" type="text" class="authorize" placeholder="Логин" required>
-			<input name="pass" type="password" class="authorize" placeholder="Пароль" required>
+			<input name="login" type="text" class="authorize rectangle" placeholder="Логин" required>
+			<input name="pass" type="password" class="authorize rectangle" placeholder="Пароль" required>
 		</div>
 		<div class="row"><span><a href="registration.php" style="float:left; color:#7E8AA0; font-size:16px">Регистрация</a></span></div>
 		<div class="row" style="float:right"><button type="submit" >Войти</button></div>

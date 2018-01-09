@@ -12,12 +12,12 @@
 				<!--кнопки "входящие" и "исходящие"// табы-->
 				<div class="column small-2 medium-2 large-2" style="background:none; padding:10px 0;">
 					<div class="tabNav">
-						<a class="request-button" href="#incoming">Входящие
+						<a class="request-button bid-section" href="#incoming">Входящие
 							<div class="row line">
 								<hr class="orange-line-button">
 							</div>
 						</a>
-						<a class="request-button" href="#outgoing">Исходящие
+						<a class="request-button bid-section" href="#outgoing">Исходящие
 							<div class="row line" style="display:none">
 								<hr class="orange-line-button">
 							</div>
@@ -30,7 +30,7 @@
 						<!-- входящие заявки -->
 						<div id="incoming" >
 							<div style="background:none; padding:10px;">
-								<button class="accept-request" style="background:#4292D3; margin-bottom: 8px; border: 1px solid #4292D3;" disabled >Утвердить</button>
+								<button class="accept-request bid-section" style="background:#4292D3; margin-bottom: 8px; border: 1px solid #4292D3;" disabled >Утвердить</button>
 
 								<!--ЗАГОЛОВОК-->
 								<table class="table-request table-checks-in">
@@ -80,8 +80,8 @@
 						<div id="outgoing">
 							<div style="background:none; padding:10px;">
 								<!-- кнопка "удалить" появляется (становится доступной) только при выделении чекбокса и ТОЛЬКО во вкладке "исходящие" -->
-								<button id="del-request" style="background:#E3A36F; margin-bottom: 8px; border: 1px solid #E3A36F;" disabled >Удалить</button> 
-								<button class="accept-request" style="margin-left:-5; background:#4292D3; margin-bottom: 8px; border: 1px solid #4292D3;" disabled >Утвердить</button>
+								<button id="del-request" class="bid-section" style="background:#E3A36F; margin-bottom: 8px; border: 1px solid #E3A36F;" disabled >Удалить</button> 
+								<button class="accept-request bid-section" style="margin-left:-5; background:#4292D3; margin-bottom: 8px; border: 1px solid #4292D3;" disabled >Утвердить</button>
 								
 								<!--ЗАГОЛОВОК-->
 								<table class="table-request table-checks-out">
@@ -139,6 +139,7 @@
 
 <script>
 	$(document).ready(function(){
+
 		// выделение всех чекбоксов в таблице входящих заявок
 	    var table1 = $('table.table-checks-in');
 	    table1
@@ -190,7 +191,7 @@
 		    tabContainers.hide().filter(':first').show(); // прячем все, кроме первого
 
 		    // далее обрабатывается клик по кнопке
-		    $('div.tabNav a').click(function () {
+		    $('div.tabNav a').on('click', function () {
 		    	$("input[type=checkbox]").prop('checked', false); //анчекаем все чекбоксы и ставим недоступной кнопку утверждения
 		    	$('.accept-request').attr('disabled',true);
 		    	$('#del-request').attr('disabled',true);

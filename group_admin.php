@@ -28,9 +28,12 @@
 		<div class="column small-12 medium-12 large-12" style="padding-top:10px;">
 		<div style="background:white">
 		<div class="block-absolute">
+
+		<div class="row">
 		
+		<div class="column small-2 medium-2 large-2">
 		<p2>Школа
-		<select name="school"; style="width:20%">
+		<select class="group-select" name="school"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -49,9 +52,11 @@
 		'
 		<select>
 		</p2>
-		
+		</div>
+
+		<div class="column small-4 medium-4 large-4">
 		<p2>Кафедра
-		<select name="kaf"; style="width:20%">
+		<select class="group-select" name="kaf"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -71,8 +76,11 @@
 		');
 		echo
 		'
+		</div>
+
+		<div class="column small-4 medium-4 large-4">
 		<p2>Специальность
-		<select name="speciality"; style="width:20%">
+		<select class="group-select" name="speciality"; style="width:57%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -92,8 +100,13 @@
 		');
 		echo
 		'
+		</div>
+		</div>
+
+		<div class="row">
+		<div class="column small-2 medium-2 large-2">
 		<p2>Курс
-		<select name="course"; style="width:20%">
+		<select class="group-select" name="course"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -113,8 +126,11 @@
 		');
 		echo
 		'
+		</div>
+
+		<div class="column small-4 medium-4 large-4">
 		<p2>Группа
-		<select name="studygroup"; style="width:20%">
+		<select class="group-select" name="studygroup"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
@@ -136,8 +152,10 @@
 		');
 		echo	
 		'
+		</div>
+		<div class="column small-4 medium-4 large-4">
 		<p2>Руководитель
-		<select name="fio"; style="width:20%">';
+		<select class="group-select" name="fio"; style="width:57%">';
 		while ($row = $stmt->fetch())
 		{
 		$admin = $row['admin'];
@@ -151,7 +169,11 @@
 		'
 		<select></p2>
 		</form>	
-		<button type="submit"; name="vibor">Выбрать</button>
+		</div>
+			<div class="column small-2 medium-2 large-2">
+			<button class="button" type="submit"; name="vibor" >Выбрать</button>
+			</div>
+		</div>
 		
 			<table class="linkRow">
 				<thead>

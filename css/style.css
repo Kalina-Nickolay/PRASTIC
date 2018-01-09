@@ -85,31 +85,21 @@ button[disabled]{
 /*нужно поменять*/
 .request-button { 
 	display: inline-block;
-    vertical-align: middle;
-    margin: 0 0 1rem 0;
-    font-family: inherit;
     padding: 10 10;
-    -webkit-appearance: none;
     border: 1px solid transparent;
-    border-radius: 0;
     -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
-    transition: background-color 0.25s ease-out, color 0.25s ease-out;
-    font-size: 0.9rem;
-    line-height: 1;
     text-align: center;
     cursor: pointer;
 
     font-family: sans-serif;
-	  /* 1 */
-	  font-size: 100%;
-	  /* 1 */
-	  line-height: 1.15;
-	  /* 1 */
-	  margin: 0;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
 
     margin-bottom:10px; 
     width:100%; 
-    background:#FAFAFA; color:black
+    background:#FAFAFA; 
+    color:#343843;
 }
 
 .table-request {
@@ -139,17 +129,36 @@ td {
 	background-color: #BFC1C2 !important;
 	border-bottom: 8px solid #d4d4d3;
 }
-
-.request-select {
-	background: inherit;
-	text-align: center;
-	color: inherit;
-}
  
-input + button {
-  display: none;
-}
-input:checked + button {
-  display: inline;
+#site_caption {
+	color: #343843;
+	font-family: 'Franklin Gothic Medium';
+	font-size: 30px;
+	margin-bottom:0;
 }
 
+#cab_button {
+	float:right; 
+	color: #7E8AA0; 
+	font-size:20px;
+	margin: 10 0;
+	padding-right: 0;
+}
+
+.linkRow {
+	margin-top:0;
+}
+
+.linkRow tr{
+	border:1px solid #aeaeae;	
+}
+
+.speciality-name {
+	font-size:24px;
+	font-weight: normal;
+	margin:20 10;
+}
+
+.bid-section {
+	font-weight: bold;
+}

@@ -12,12 +12,12 @@
 				<!--кнопки "входящие" и "исходящие"// табы-->
 				<div class="column small-2 medium-2 large-2" style="background:none; padding:10px 0;">
 					<div class="tabNav">
-						<a class="request-button" href="#incoming">Входящие
+						<a class="request-button bid-section" href="#incoming">Входящие
 							<div class="row line">
 								<hr class="orange-line-button">
 							</div>
 						</a>
-						<a class="request-button" href="#outgoing">Исходящие
+						<a class="request-button bid-section" href="#outgoing">Исходящие
 							<div class="row line" style="display:none">
 								<hr class="orange-line-button">
 							</div>
@@ -85,7 +85,7 @@
 						<div id="outgoing">
 							<div style="background:none; padding:10px;">
 								<!-- кнопка "удалить" появляется (становится доступной) только при выделении чекбокса и ТОЛЬКО во вкладке "исходящие" -->
-								<button id="del-request" style="margin-right:0; background:#E3A36F; margin-bottom: 8px; border: 1px solid #E3A36F;" disabled >Удалить</button> 
+								<button id="del-request" class="bid-section" style="margin-right:0; background:#E3A36F; margin-bottom: 8px; border: 1px solid #E3A36F;" disabled >Удалить</button> 
 								
 								<!--ЗАГОЛОВОК-->
 								<table class="table-request table-checks-out">

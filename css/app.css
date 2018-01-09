@@ -59,11 +59,11 @@ input:-ms-input-placeholder {
   font-style: italic; 
 }
 button {
-	color: #fff; /* цвет текста */
+	color: #fafafa; /* цвет текста */
 	border-radius:0px !important;
 	text-decoration: none; /* убирать подчёркивание у ссылок */
 	user-select: none; /* убирать выделение текста */
-	font-weight:bold;
+	/*font-weight: bold;*/
 	background: rgb(66,146,211); /* фон кнопки */
 	padding: .7em 1.5em; /* отступ от текста */
 	outline: none; /* убирать контур в Mozilla */
@@ -77,15 +77,18 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
 	height:30px;
 	/*padding-left:10px;
 	padding-right:10px;*/
-	font-size:x-small;
+	font-size:/*x-small*/ 12px;
  }
  
- li:hover {
-  
-    background: #343555; /* Цвет фона */
+ li :hover {
+    background: #BFC1C2; /* Цвет фона */
  }
+
+ li a:hover {
+    color: #FAFAFA;
+ }
+
  li:active {
-  
     background: #BABBBD; /* Цвет фона */
  }
  
@@ -128,7 +131,7 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
  table {
     width: 98%; /* Ширина таблицы */
     background: white; /* Цвет фона таблицы */
-    color: black; /* Цвет текста */
+    color: #343843; /* Цвет текста */
 	/*border: 1px solid black;*/
     border-collapse: collapse;
 	margin:1%;
@@ -157,7 +160,7 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
 }
 li a {
   text-decoration: none; /*убираем подчеркивание текста ссылок*/
-  color: white; /*меняем цвет ссылок*/
+  color: #FAFAFA; /*меняем цвет ссылок*/
   padding:0px 15px; /*добавляем отступ*/
   font-family: arial; /*меняем шрифт*/
   line-height:30px; /*ровняем меню по вертикали*/
@@ -185,8 +188,8 @@ li {
 .rectangle1{
 	border-radius: 0px;
 	border:4px;
-	background:white;
-	color:black;
+	background: #FFFFFF;
+	color: #343843;
 }
   .rectangle2{
 	border-radius: 0px;
@@ -212,7 +215,7 @@ li {
 
 .request-select{
   border-radius: 0px;
-  /*background:#fafafa;*/
+  background: inherit;
   padding-left:0.5rem;
   vertical-align:top;
   border: 0px solid #BFC1C2;
@@ -221,6 +224,19 @@ li {
   background-position: right -1rem center;
   background-repeat: no-repeat;
   background-size: 9px 6px;}
+
+.group-select{
+border-radius: 0px;
+background: #ffffff;
+padding-left:0.5rem;
+vertical-align:top;
+border: 1px solid #7E8AA0;
+background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+background-origin: content-box;
+background-position: right -1rem center;
+background-repeat: no-repeat;
+background-size: 9px 6px;
+}
 
 select option{
   border-radius: 0px;
