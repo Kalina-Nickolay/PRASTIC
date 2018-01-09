@@ -21,7 +21,7 @@
 				<ul class="menu align-right">
 					<li style="float:right;"><a href="sample.php">Образец</a></li>
 					<li style="float:right;"><a href="group_admin.php">Группы</a></li>
-					<li style="float:right;"><a href="bid.php">Заявки</a></li>
+					<li style="float:right;"><a href="bidadmin.php">Заявки</a></li>
 					<li style="float:right;"><a href="settingsAdmin.php">Настройки</a></li>
 				</ul>
 			</div>
