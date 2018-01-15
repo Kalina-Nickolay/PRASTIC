@@ -4,7 +4,7 @@
 	<!--Меню-->
 	<?php include('menu.php');?>
 	<!--Контент-->	
-	<div class="row" style="background:#D4D4D3;">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		<!--Меню-->
 		
 		<?php
@@ -109,7 +109,7 @@
 					echo'
 				</tbody>
 			</table>
-			<button class="button" onClick="clicke()">Отказаться от <br> руководства</button>
+			<button style="margin-left:1%" class="button" onClick="clicke()">Отказаться от <br> руководства</button>
 		</div></div>
 			
 		

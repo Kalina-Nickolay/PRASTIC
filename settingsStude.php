@@ -5,7 +5,9 @@
 	<?php include('menu.php');?>
 	<!--Контент-->	
 <?php
-if(isset($_POST['update_stude']))
+
+if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
+	if(isset($_POST['update_stude']))
 	{
 		$id=$_POST['id_stud'];
 		$last_name =$_POST['last_name'];
@@ -164,5 +166,11 @@ if(isset($_POST['update_stude']))
 		';
 		?>
 	</div>
+<? } else { ?>
+	<div class="column small-12 medium-12 large-12" style="height: 100vh">
+		<p id="no-res">Нет доступа</p>
+	</div>
+<?} ?>
+
 </body>	
 	

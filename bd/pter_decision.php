@@ -9,3 +9,5 @@
 	$stm = $db->prepare("UPDATE request SET pter_agree=? WHERE id_vac=? AND id_stud=?");
 	$stm -> execute(array($pter_agree, $id_vac, $id_stud));
 
+?>
+

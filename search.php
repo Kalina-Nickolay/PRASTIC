@@ -3,7 +3,6 @@
 	$idr = $_GET["idr"];
 	include('db.php'); //подключение к БД
 ?>
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!--Заголовок сайта-->
@@ -54,13 +53,13 @@
 <div id="myfond_gris" opendiv=""></div>
 <div id="box_1" class="mymagicoverbox_fenetre">
 	<form name="fr" action="bd/login.php" method="post" action="">
-		<span style="padding:2%;">Вход</span>
+		<span class="popup-caption">Вход</span>
 		<div>
 			<input name="login" type="text" class="authorize rectangle" placeholder="Логин" required>
 			<input name="pass" type="password" class="authorize rectangle" placeholder="Пароль" required>
 		</div>
-		<div class="row"><span><a href="registration.php" style="float:left; color:#7E8AA0; font-size:16px">Регистрация</a></span></div>
-		<div class="row" style="float:right"><button type="submit" >Войти</button></div>
+		<div class="row"><span><a href="registration.php" style="float:left; color:#7E8AA0; font-size:16px; padding-bottom:10">Регистрация</a></span></div>
+		<div class="row" style="float:right"><button class="popup-button" type="submit" >Войти</button></div>
 	</form>
 </div>
 

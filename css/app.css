@@ -4,8 +4,8 @@
 
 .header_image {
     width: 60%;
-	padding:1%; /*Внутри*/
-	/*margin:1%;*/ /*Снаружи*/
+	padding:1%; /*Г‚Г­ГіГІГ°ГЁ*/
+	/*margin:1%;*/ /*Г‘Г­Г Г°ГіГ¦ГЁ*/
 }
 
 .header_menu {
@@ -36,7 +36,14 @@ h1.title-page {
 }
 
 #trunk {
-	padding:5px !important; margin:10px; background:#FAFAFA;
+	padding:5px !important; 
+  margin:10px; 
+  height:250px;
+  background: #FAFAFA;
+}
+
+.sample-contract {
+  height:100px !important;
 }
 
 .content h1, .h1, .inner h1, .title-bread h1 {
@@ -59,21 +66,21 @@ input:-ms-input-placeholder {
   font-style: italic; 
 }
 button {
-	color: #fafafa; /* цвет текста */
+	color: #fafafa; /* Г¶ГўГҐГІ ГІГҐГЄГ±ГІГ  */
 	border-radius:0px !important;
-	text-decoration: none; /* убирать подчЮркивание у ссылок */
-	user-select: none; /* убирать выделение текста */
+	text-decoration: none; /* ГіГЎГЁГ°Г ГІГј ГЇГ®Г¤Г·ГћГ°ГЄГЁГўГ Г­ГЁГҐ Гі Г±Г±Г»Г«Г®ГЄ */
+	user-select: none; /* ГіГЎГЁГ°Г ГІГј ГўГ»Г¤ГҐГ«ГҐГ­ГЁГҐ ГІГҐГЄГ±ГІГ  */
 	/*font-weight: bold;*/
-	background: rgb(66,146,211); /* фон кнопки */
-	padding: .7em 1.5em; /* отступ от текста */
-	outline: none; /* убирать контур в Mozilla */
+	background: rgb(66,146,211); /* ГґГ®Г­ ГЄГ­Г®ГЇГЄГЁ */
+	padding: .7em 1.5em; /* Г®ГІГ±ГІГіГЇ Г®ГІ ГІГҐГЄГ±ГІГ  */
+	outline: none; /* ГіГЎГЁГ°Г ГІГј ГЄГ®Г­ГІГіГ° Гў Mozilla */
 } 
-button:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
-button:active { background: rgb(152,15,0); } /* при нажатии */
+button:hover { background: rgb(232,95,76); } /* ГЇГ°ГЁ Г­Г ГўГҐГ¤ГҐГ­ГЁГЁ ГЄГіГ°Г±Г®Г°Г  Г¬Г»ГёГЄГЁ */
+button:active { background: rgb(152,15,0); } /* ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГЁ */
 
  li {
-    display: inline-block; /* ‘трочно-блочные элементы */
-    background: #343843; /* –вет фона */
+    display: inline-block; /* вЂГІГ°Г®Г·Г­Г®-ГЎГ«Г®Г·Г­Г»ГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ» */
+    background: #343843; /* вЂ“ГўГҐГІ ГґГ®Г­Г  */
 	height:30px;
 	/*padding-left:10px;
 	padding-right:10px;*/
@@ -81,7 +88,7 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
  }
  
  li :hover {
-    background: #BFC1C2; /* –вет фона */
+    background: #BFC1C2; /* вЂ“ГўГҐГІ ГґГ®Г­Г  */
  }
 
  li a:hover {
@@ -89,16 +96,16 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
  }
 
  li:active {
-    background: #BABBBD; /* –вет фона */
+    background: #BABBBD; /* вЂ“ГўГҐГІ ГґГ®Г­Г  */
  }
  
  
  p1{
 	font-weight:bold; 
-	font-size:large; 
+	font-size: 18px; 
 	padding:0; 
 	margin:0;
-	color:black;
+	color:#343843;
  }
  
  p2{
@@ -110,28 +117,28 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
  }
  
  p3{
-	font-size:small;
+	font-size: 12px;
 	padding:0; 
 	margin:0;
-	color:black;
+	color: #343843;
  }
   p4{
 	  font-weight:bold; 
-	font-size:small;
+	font-size:12px;
 	padding:0; 
 	margin:0;
-	color:black;
+	color:#343843;
  }
  p5{
-	font-size:large; 
+	font-size:18px;  /* Р°Р°Р°Р°Р° С‡С‚РѕРѕРѕРѕ */
 	padding:0; 
 	margin:0;
-	color:black;
+	color:#343843;
  }
  table {
-    width: 98%; /* ирина таблицы */
-    background: white; /* –вет фона таблицы */
-    color: #343843; /* –вет текста */
+    width: 98%; /* ЛњГЁГ°ГЁГ­Г  ГІГ ГЎГ«ГЁГ¶Г» */
+    background: white; /* вЂ“ГўГҐГІ ГґГ®Г­Г  ГІГ ГЎГ«ГЁГ¶Г» */
+    color: #343843; /* вЂ“ГўГҐГІ ГІГҐГЄГ±ГІГ  */
 	/*border: 1px solid black;*/
     border-collapse: collapse;
 	margin:1%;
@@ -140,9 +147,9 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
    }
    td, th {
 	   height: 1.5em;
-     background: white; /* –вет фона Ячеек */
-    padding: 5px; /* ЏолЯ вокруг текста */
-	/*border: 1px solid grey; /* Џараметры рамки */
+     background: white; /* вЂ“ГўГҐГІ ГґГ®Г­Г  ГџГ·ГҐГҐГЄ */
+    padding: 5px; /* ВЏГ®Г«Гџ ГўГ®ГЄГ°ГіГЈ ГІГҐГЄГ±ГІГ  */
+	/*border: 1px solid grey; /* ВЏГ Г°Г Г¬ГҐГІГ°Г» Г°Г Г¬ГЄГЁ */
    }
    
    th{
@@ -153,25 +160,25 @@ button:active { background: rgb(152,15,0); } /* при нажатии */
    }
    
    ul {
-  list-style: none; /*убираем маркеры списка*/
-  margin: 0; /*убираем отступы*/
-  padding-left: 0; /*убираем отступы*/
-  height: 30px; /*задаем высоту*/
+  list-style: none; /*ГіГЎГЁГ°Г ГҐГ¬ Г¬Г Г°ГЄГҐГ°Г» Г±ГЇГЁГ±ГЄГ */
+  margin: 0; /*ГіГЎГЁГ°Г ГҐГ¬ Г®ГІГ±ГІГіГЇГ»*/
+  padding-left: 0; /*ГіГЎГЁГ°Г ГҐГ¬ Г®ГІГ±ГІГіГЇГ»*/
+  height: 30px; /*Г§Г Г¤Г ГҐГ¬ ГўГ»Г±Г®ГІГі*/
 }
 li a {
-  text-decoration: none; /*убираем подчеркивание текста ссылок*/
-  color: #FAFAFA; /*менЯем цвет ссылок*/
-  padding:0px 15px; /*добавлЯем отступ*/
-  font-family: arial; /*менЯем шрифт*/
-  line-height:30px; /*ровнЯем меню по вертикали*/
+  text-decoration: none; /*ГіГЎГЁГ°Г ГҐГ¬ ГЇГ®Г¤Г·ГҐГ°ГЄГЁГўГ Г­ГЁГҐ ГІГҐГЄГ±ГІГ  Г±Г±Г»Г«Г®ГЄ*/
+  color: #FAFAFA; /*Г¬ГҐГ­ГџГҐГ¬ Г¶ГўГҐГІ Г±Г±Г»Г«Г®ГЄ*/
+  padding:0px 15px; /*Г¤Г®ГЎГ ГўГ«ГџГҐГ¬ Г®ГІГ±ГІГіГЇ*/
+  font-family: arial; /*Г¬ГҐГ­ГџГҐГ¬ ГёГ°ГЁГґГІ*/
+  line-height:30px; /*Г°Г®ГўГ­ГџГҐГ¬ Г¬ГҐГ­Гѕ ГЇГ® ГўГҐГ°ГІГЁГЄГ Г«ГЁ*/
   display: block; 
-  /*border-right: 1px solid #F36262;*/ /*добавлЯем бордюр справа*/
-  -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+  /*border-right: 1px solid #F36262;*/ /*Г¤Г®ГЎГ ГўГ«ГџГҐГ¬ ГЎГ®Г°Г¤ГѕГ° Г±ГЇГ°Г ГўГ */
+  -moz-transition: all 0.3s 0.01s ease; /*Г¤ГҐГ«Г ГҐГ¬ ГЇГ«Г ГўГ­Г»Г© ГЇГҐГ°ГҐГµГ®Г¤*/
   -o-transition: all 0.3s 0.01s ease;
   -webkit-transition: all 0.3s 0.01s ease;
 }
 li {
-  float:left; /*ђазмещаем список горизонтально длЯ реализации меню*/
+  float:left; /*ВђГ Г§Г¬ГҐГ№Г ГҐГ¬ Г±ГЇГЁГ±Г®ГЄ ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г® Г¤Г«Гџ Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГЁ Г¬ГҐГ­Гѕ*/
 }
   
 .rectangle{
@@ -215,6 +222,9 @@ li {
 
 .request-select{
   border-radius: 0px;
+  width:60%; 
+  font-size:12px;
+  text-align: right;
   background: inherit;
   padding-left:0.5rem;
   vertical-align:top;

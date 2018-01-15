@@ -4,7 +4,7 @@
 	<!--Меню-->
 	<?php include('menu.php');?>
 	<!--Контент-->	
-	<div class="row" style="background:#D4D4D3;">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		<!--Меню-->
 		
 		<?php
@@ -32,7 +32,7 @@
 		<div class="row">
 		
 		<div class="column small-2 medium-2 large-2">
-		<p2>Школа
+		<p2 style="float: right;">Школа
 		<select class="group-select" name="school"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
@@ -105,7 +105,7 @@
 
 		<div class="row">
 		<div class="column small-2 medium-2 large-2">
-		<p2>Курс
+		<p2 style="padding-left: 10;">Курс
 		<select class="group-select" name="course"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())

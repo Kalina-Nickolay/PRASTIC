@@ -5,10 +5,9 @@
 	
 	<!--Меню-->
 	<?php include('menu.php');?>
-		
-	<!--Контент-->	
-	<div class="row" style="background:#D4D4D3; min-height:100%">
-		<!--Меню-->
+
+	<? if (isset($_SESSION['id'])) { ?>
+		<div class="row" style="background:#D4D4D3;">
 		
 		<?php
 		$name_dogovora="Образец договора о сотрудничестве";
@@ -26,8 +25,8 @@
 			{
 			echo
 			'
-			<div class="column small-6 medium-6 large-6" style="padding-top:40px;">
-			<div class="row" id="trunk">
+			<div class="column small-6 medium-6 large-6">
+			<div class="row sample-contract" id="trunk">
 			<div class="column small-12 medium-12 large-12" style="padding:10px;">
 			
 			<p1><a href="files/contract/'.$name_dogovora.'" download>
@@ -53,5 +52,11 @@
 		}
 		?>
 	</div>
+<? } else { ?>
+	<div class="column small-12 medium-12 large-12" style="height: 100vh">
+		<p id="no-res">Нет доступа</p>
+	</div>
+<? } ?>
+	
 </body>	
 	

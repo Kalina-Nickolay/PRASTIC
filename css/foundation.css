@@ -1024,9 +1024,9 @@ select {
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg=="); } }
   select:focus {
     outline: none;
-    border: 1px solid #8a8a8a;
-    background-color: #fefefe;
-    box-shadow: 0 0 5px #cacaca;
+    /*border: 1px solid #8a8a8a;*/
+    background-color: /*#fefefe*/ inherit;
+    /*box-shadow: 0 0 5px #cacaca;*/
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
   select:disabled {
     /*background-color: #e6e6e6;*/

@@ -9,7 +9,7 @@ margin-left: -175px;
 margin-top: -170px;
  text-align:center;
  display:none;
- padding:25px 20px;
+ padding:0 20 20 20;
  border:3px solid;
  border-color:#D4D4D3;
  background-color:#FAFAFA;
@@ -67,11 +67,12 @@ button[disabled]{
   color: #666666 !important;
 }
 
-.orange_line{
+.orange-line{
 	background-color: #EF9C00;
 	width:100%;
 	margin-top: 0;
 	margin-bottom: 0;
+	border-color:transparent;
 }
 
 .orange-line-button{
@@ -114,6 +115,7 @@ td {
 	padding:5px;
 }
 
+/* стили для таблицы заявок / для разных типов (утверждённая, отклонённая, просто заявка) */ 
 .request {
 	background-color: #FAFAFA !important;
 	border-bottom: 8px solid #d4d4d3;
@@ -122,14 +124,30 @@ td {
 .request-approved {
 	background-color: #7E8AA0 !important;
 	border-bottom: 8px solid #d4d4d3;
-	color: #FAFAFA;
+	color: #FAFAFA !important;
 }
 
 .request-declined {
 	background-color: #BFC1C2 !important;
 	border-bottom: 8px solid #d4d4d3;
+ }
+
+.request-declined p, .request-approved p, .request p {
+	font-size: 12px;
+	margin-bottom: 0;
 }
- 
+
+.request-declined select, .request-approved select, .request select {
+	margin-bottom: 0;
+}
+
+.request-approved select {
+	color: #FAFAFA;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #FAFAFA'></polygon></svg>");
+}
+/* ------------------------------------------------------------------------------------------ */
+
+/* заголовок сайта*/
 #site_caption {
 	color: #343843;
 	font-family: 'Franklin Gothic Medium';
@@ -137,6 +155,7 @@ td {
 	margin-bottom:0;
 }
 
+/* Кнопка "Войти/Выйти" */
 #cab_button {
 	float:right; 
 	color: #7E8AA0; 
@@ -145,13 +164,23 @@ td {
 	padding-right: 0;
 }
 
+
+/* таблицы групп */
 .linkRow {
 	margin-top:0;
 }
 
-.linkRow tr{
+.linkRow tr, .linkRow td, .linkRow th{
 	border:1px solid #aeaeae;	
+	font-size: 12px;
 }
+
+.linkRow th {
+	text-align: left;
+	color: #343843;	
+	font-size: 14px;
+}
+/* --------------*/
 
 .speciality-name {
 	font-size:24px;
@@ -161,4 +190,50 @@ td {
 
 .bid-section {
 	font-weight: bold;
+}
+
+.no-contract {
+	background: #BFC1C2 !important;
+}
+
+#no-res {
+	padding:20;
+	font-weight: bold;
+	color: #7E8AA0;
+	font-size: 20px;
+	width: inherit;
+	text-align: center;
+}
+
+/* блоки текста (описание, вид деятельности, для инвалидов) в полном описании вакансии и компании*/
+.vac-description {
+	margin-bottom: 10px;
+	text-align: justify;
+}
+
+.vac-up {
+	float:right;
+	position:relative;
+	margin-left:3%;
+}
+
+.block-absolute {
+	padding:10 0;
+}
+
+/* заголовок всплывающего окна */
+.popup-caption {
+	font-size: 28px;
+	line-height: 3;
+}
+/* кнопка submit всплывающего окна */ 
+.popup-button {
+	padding: 10 25;
+	font-size: 18px;
+}
+
+.contract-href {
+	font-size: 12px;
+	font-weight: bold;
+	color: #7E8AA0;
 }

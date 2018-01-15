@@ -69,7 +69,7 @@
 										<td style="background:none;"><p><? echo $FIO ?></p></td>
 										<td style="background:none;"><p><? echo $company ?></p></td>
 										<td style="background:none;">
-											<select id="<? echo $row['id_vac'].'!'.$row['id_stud'] ?>" class="request-select" style="width:60%">
+											<select id="<? echo $row['id_vac'].'!'.$row['id_stud'] ?>" class="request-select">
 												<option value="" selected disabled hidden>...</option>
 												<option value="1" <? if ($row['pter_agree']==1) {?> selected <?}?> >Да</option>
 												<option value="0" <? if ($row['pter_agree']=="0") {?> selected <?}?>>Нет</option>

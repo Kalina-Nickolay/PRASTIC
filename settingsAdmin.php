@@ -37,7 +37,7 @@ if(isset($_POST['update_admin']))
 		
 	}
 ?>
-	<div class="row" style="background:#D4D4D3;">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		<!--Меню-->
 		
 		<?php

@@ -4,17 +4,17 @@
 	<!--Меню-->
 	<?php include('menu.php');?>
 	<!--Контент-->	
-	<div class="row" style="background:#D4D4D3;">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		<!--Меню-->
 		
 		<?php
-		if(isset($_POST['vibor'])){
-		$shkola = $_POST['school'];
-		$gruppa = $_POST['studygroup'];
-		$kafedra = $_POST['kaf'];
-		$kyrs = $_POST['course'];
-		$imya = $_POST['fio'];
-		$spec = $_POST['speciality'];
+		if(isset($_GET['vibor'])){
+		$shkola = $_GET['school'];
+		$gruppa = $_GET['studygroup'];
+		$kafedra = $_GET['kaf'];
+		$kyrs = $_GET['course'];
+		$imya = $_GET['fio'];
+		$spec = $_GET['speciality'];
 		};
 		$stmt = $db->query('SELECT distinct school
 			FROM groups	
@@ -23,7 +23,7 @@
 		
 		echo
 		'
-		<form action="" method="post">
+		<form action="" method="GET">
 		<div class="column small-12 medium-12 large-12" style="padding-top:10px;">
 		<div style="background: #FFFFFF">
 		<div class="block-absolute">

@@ -134,7 +134,7 @@
 								</div>
 								<div class="grid-x grid-padding-x">
 									<div class="large-12 cell">
-										<textarea form="resumeStude" required class="rectangle" name="experience" placeholder="Приктический опыт" value="'.$experience.'" type="text" style="height:100px;" >'.$experience.'</textarea>
+										<textarea form="resumeStude" required class="rectangle" name="experience" placeholder="Практический опыт" value="'.$experience.'" type="text" style="height:100px;" >'.$experience.'</textarea>
 									</div>
 								</div>
 								<div class="grid-x grid-padding-x">

@@ -4,7 +4,7 @@
 	<!--Меню-->
 	<?php include('menu.php');?>
 
-	<div class="row" style="background:#D4D4D3; height:100%">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		
 		<?php
 		$stmt = $db->query('SELECT * 
@@ -29,7 +29,7 @@
 				<div id="trunk">
 					<div style="padding:10px;">
 						<p1><? echo $name_student ?></p1>
-						<hr class="orange_line">
+						<hr class="orange-line">
 						<p2><? echo $group_student ?></p2>
 						<br><p3>Опыт: </p3>
 						<br><p3><? echo $experience ?></p3>
@@ -42,7 +42,8 @@
 							//это для списка вакансий для приглашения - в выпадающем списке выводятся вакансии, на которые ещё есть свободные места (не утверждённые админом)
 							$vac = $db->query("SELECT vacancy.id_vac AS id_vac, vacancy.about AS about FROM vacancy WHERE vacancy.id_pter = ".$_SESSION['id']." AND vacancy.places>(SELECT COUNT(request.id_vac) FROM request WHERE request.admin_agree=1 AND vacancy.id_vac=request.id_vac)");
 
-							$stm = $db->prepare("SELECT id_stud FROM request WHERE id_stud=? AND (admin_agree=1 OR id_vac IN (SELECT id_vac FROM vacancy WHERE id_pter=?)) ");
+							// проверяем, есть ли у данного студента утверждённое место практики и отправлял ли уже практикодатель этому студенту своё приглашение
+							$stm = $db->prepare("SELECT id_stud FROM request WHERE id_stud=? AND (admin_agree=1 OR id_vac IN (SELECT id_vac FROM vacancy WHERE id_pter=?)) "); 
 							$stm->execute(array($id, $_SESSION['id']));
 							$res = $stm->fetch();
 
@@ -61,7 +62,7 @@
 <div id="myfond_gris" opendiv=""></div>
 <div id="box_invite" class="mymagicoverbox_fenetre">
 	<form id="send_invite"  method="post" action="bd/out_request.php">
-		<span style="padding:2%;">Приглашение</span>
+		<span class="popup-caption">Приглашение</span>
 		<div>
 			<input class="rectangle" type="text" name="student" readonly> 
 			<select class="rectangle-select" required>
@@ -71,7 +72,7 @@
 			    <? } ?>
 			</select>
 		</div>
-		<div class="row" style="float:right"><button type="submit" >Отправить</button></div>
+		<div class="row" style="float:right"><button class="popup-button" type="submit" >Отправить</button></div>
 	</form>
 </div>
 

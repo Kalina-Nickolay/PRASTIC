@@ -4,7 +4,7 @@
 	<!--Меню-->
 	<?php include('menu.php');?>
 	<!--Контент-->	
-	<div class="row" style="background:#D4D4D3;">
+	<div class="row" style="background:#D4D4D3; min-height: 100%">
 		<!--Меню-->
 		
 		<?php
@@ -33,10 +33,11 @@
 						<th>Фамилия</th>
 						<th>Имя</th>
 						<th>Отчество</th>
-						<th>ОВЗ</th>
+						<th>Ограничения по инвалидности</th>
 					</tr>
 				</thead>
 				<tbody>';
+				$num=1;
 				while ($row = $stmt->fetch())
 				{
 				$idgr = $row['idgr'];
@@ -48,12 +49,13 @@
 				
 					echo'
 					<tr>
-						<td>'.$studygroup.'</td>
+						<td>'.$num.'</td>
 						<td>'.$lastname.'</td>
 						<td>'.$name.'</td>
 						<td>'.$fathername.'</td>
 						<td>'.$invalid.'</td>
 					</tr>';
+				$num++;
 				};
 				echo ' 
 				</tbody>

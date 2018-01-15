@@ -240,7 +240,7 @@
 
    		$('.accept-request').click(function () {
    			var cb = $('table').find('.requests:checked'); 
-   			if (cb.length > 1) 
+   			if (cb.length > 1) // если выделено больше одной заявки
    				alert("Нельзя отправить более одной заявки на утверждение администратору.");
    			else {
    				acc_req = $(cb[0]).parent().parent();
