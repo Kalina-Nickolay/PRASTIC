@@ -108,8 +108,8 @@
 					</div>
 				<?}
 
-				$stm = $db->prepare("SELECT id_vac FROM request WHERE id_vac=? AND id_stud=?");
-				$stm->execute(array($id_vac, $_SESSION['id']));
+				$stm = $db->prepare("SELECT id_vac FROM request WHERE id_stud=? AND (id_vac=? OR (stud_agree=1 AND pter_agree=1 AND admin_agree=1))");
+				$stm->execute(array($_SESSION['id'],$id_vac));
 				$res = $stm->fetch();
 
 				if ($_SESSION['role']=='student') {
