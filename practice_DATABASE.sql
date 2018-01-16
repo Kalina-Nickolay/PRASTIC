@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 19 2017 г., 09:20
+-- Время создания: Янв 16 2018 г., 06:37
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.1.0
 
@@ -48,11 +48,11 @@ INSERT INTO `admin` (`id`) VALUES
 
 CREATE TABLE `groups` (
   `id_group` int(10) UNSIGNED NOT NULL,
-  `studygroup` varchar(6) NOT NULL,
-  `speciality` varchar(255) NOT NULL,
-  `course` int(11) NOT NULL,
-  `kaf` varchar(255) NOT NULL,
-  `school` varchar(255) NOT NULL,
+  `studygroup` varchar(6) NOT NULL COMMENT 'название группы',
+  `speciality` varchar(255) NOT NULL COMMENT 'специальность / направление',
+  `course` int(1) UNSIGNED NOT NULL COMMENT 'курс',
+  `kaf` varchar(255) NOT NULL COMMENT 'кафедра',
+  `school` varchar(255) NOT NULL COMMENT 'школа',
   `admin` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -61,10 +61,10 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id_group`, `studygroup`, `speciality`, `course`, `kaf`, `school`, `admin`) VALUES
-(7, 'Б8319', 'Прикладная информатика', 3, 'Информатики, математического и компьютерного моделирования', 'ШЕН', 1),
+(7, 'Б8319', 'Прикладная информатика', 3, 'Информатики, математического и компьютерного моделирования', 'ШЕН', 25),
 (8, 'Б8314', 'Прикладная математика', 3, 'Информатики, математического и компьютерного моделирования', 'ШЕН', 1),
 (9, 'Б8202', 'Математика и компьютерные науки', 2, 'Информатики, математического и компьютерного моделирования', 'ШЕН', 1),
-(10, 'Б8203', 'Прикладная математика и информатика', 2, 'Информатики, математического и компьютерного моделирования', 'ШЕН', NULL);
+(10, 'Б8203', 'Прикладная математика и информатика', 2, 'Информатики, математического и компьютерного моделирования', 'ШЕН', 1);
 
 -- --------------------------------------------------------
 
@@ -74,13 +74,13 @@ INSERT INTO `groups` (`id_group`, `studygroup`, `speciality`, `course`, `kaf`, `
 
 CREATE TABLE `person` (
   `id_person` int(10) UNSIGNED NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `fathername` varchar(50) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `telephone` varchar(15) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `fathername` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telephone` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -109,7 +109,9 @@ INSERT INTO `person` (`id_person`, `lastname`, `name`, `fathername`, `username`,
 (21, 'Орлов', 'Кирилл', 'Витальевич', 'coral', 'd2ebed4eaf58509dcc358e1782c38fea', 'hr_mail@coral.ru', '2758934'),
 (23, 'Кленин', 'Александр', 'Сергеевич', 'klenin_as', 'd2ebed4eaf58509dcc358e1782c38fea', 'klenin@gmail.com', '89145056677'),
 (24, 'Ефимов', 'Дмитрий', 'Сергеевич', 'vl_consult', '8dd2002ca9dd04ed11c60291f6a8b030', 'hr_mail@vl_consult.ru', '2782310'),
-(25, 'Малыкина', 'Ирина', 'Анатольевна', 'malikina_ia', '387dbe4d4488648a3e75a0d8ed75e44a', 'malikina_ia@dvfu.ru', '89035557733');
+(25, 'Малыкина', 'Ирина', 'Анатольевна', 'malikina_ia', '387dbe4d4488648a3e75a0d8ed75e44a', 'malikina_ia@dvfu.ru', '89035557733'),
+(26, 'Маркова', 'Альбина', 'Владимировна', 'alya_m', '1cbfa9c878ef8692c1ae21e4cfa11000', 'alya.markova@gmail.com', '89020687425'),
+(28, 'Кошевенко', 'Игорь', 'Сергеевич', 'atk', '82f4b3acc856d7c29eab7983b5b04ebb', 'atk@atk.ru', '8914555');
 
 -- --------------------------------------------------------
 
@@ -119,10 +121,10 @@ INSERT INTO `person` (`id_person`, `lastname`, `name`, `fathername`, `username`,
 
 CREATE TABLE `pterodactyl` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL COMMENT 'название компании',
+  `address` varchar(255) NOT NULL COMMENT 'адрес',
   `sphere` varchar(255) NOT NULL COMMENT 'сфера деятельности',
-  `about` varchar(5000) NOT NULL COMMENT 'о компании',
+  `about` text NOT NULL COMMENT 'о компании',
   `iscontract` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'наличие договора о сотрудничестве с ДВФУ',
   `contract` varchar(255) DEFAULT NULL COMMENT 'ссылка на электроный вариант договора'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -132,7 +134,7 @@ CREATE TABLE `pterodactyl` (
 --
 
 INSERT INTO `pterodactyl` (`id`, `name`, `address`, `sphere`, `about`, `iscontract`, `contract`) VALUES
-(17, 'Ростелеком', 'г.Владивосток, пр-т Красного Знамени, 37 ', 'Телефонная связь, IP-телефония, кабельное телевидение, Интернет.', '\"Ростелеком\" – одна из крупнейших в России и Европе телекоммуникационных компаний, присутствующая во всех сегментах рынка услуг связи и охватывающая более 34 млн. домохозяйств в России.', 0, NULL),
+(17, 'Ростелеком', 'г.Владивосток, пр-т Красного Знамени, 37 ', 'Телефонная связь, IP-телефония, кабельное телевидение, Интернет.', '\"Ростелеком\" – одна из крупнейших в России и Европе телекоммуникационных компаний, присутствующая во всех сегментах рынка услуг связи и охватывающая более 34 млн. домохозяйств в России.', 1, 'Журнал посещаемости и успеваемости.docx'),
 (18, 'АльянсТелеком', 'г.Владивосток, ул. Луговая, 21а ', 'Интернет и телевидение, видеонаблюдение для физических и юридических лиц.', 'Компания \"АльянсТелеком\" работает на рынке телекоммуникационных услуг с 2007 года. Образовавшись путем слияния двух операторов связи города Владивостока, ООО \"ОктопусНет\" и ООО \"ВладТелеКом\" (\"СтритНет\"), компания превратилась в провайдера города Владивостока, предоставив жителям доступ к современным телекоммуникационным услугам и Интернет-сервисам.\r\n\r\nМультимедийная сеть компании охватывает большую часть города, при этом компания постоянно расширяет свою транспортную сеть, подключая новые дома к быстрому Интернету и современному кабельному телевидению \"АльянсЦифра\".', 0, NULL),
 (19, 'РМ софт', 'г.Владивосток, ул. Карла Либкнехта, 10а', 'Разработка, продажа, сопровождение и обслуживание программного обеспечения.', 'ООО \"РМ Софт\".', 0, NULL),
 (20, 'Созвездие', 'г.Владивосток, пр-т Народный, 29', 'Разработка, продажа, внедрение, сопровождение программы 1С.', '', 0, NULL),
@@ -149,8 +151,8 @@ CREATE TABLE `request` (
   `id_vac` int(10) UNSIGNED NOT NULL COMMENT 'вакансия',
   `id_stud` int(10) UNSIGNED NOT NULL COMMENT 'студент',
   `stud_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие студента',
-  `pter_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие практикодателя',
-  `admin_agree` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'согласие администратора',
+  `pter_agree` tinyint(1) DEFAULT NULL COMMENT 'согласие практикодателя',
+  `admin_agree` tinyint(1) DEFAULT NULL COMMENT 'согласие администратора',
   `sender` varchar(25) NOT NULL COMMENT 'категория пользователя, который отправил заявку'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -159,7 +161,17 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id_vac`, `id_stud`, `stud_agree`, `pter_agree`, `admin_agree`, `sender`) VALUES
-(3, 6, 1, 1, 0, '');
+(1, 11, 0, 0, NULL, 'student'),
+(2, 8, 1, 1, 0, 'student'),
+(2, 12, 1, 1, 1, 'student'),
+(2, 15, 0, 0, NULL, 'pterodactyl'),
+(2, 26, 1, 1, 1, 'student'),
+(3, 6, 1, 1, 0, 'student'),
+(3, 11, 1, 1, 1, 'student'),
+(4, 5, 1, 1, NULL, 'student'),
+(4, 11, 0, NULL, NULL, 'student'),
+(5, 5, 0, 1, NULL, 'pterodactyl'),
+(5, 15, 0, 0, NULL, 'pterodactyl');
 
 -- --------------------------------------------------------
 
@@ -169,9 +181,9 @@ INSERT INTO `request` (`id_vac`, `id_stud`, `stud_agree`, `pter_agree`, `admin_a
 
 CREATE TABLE `resume` (
   `id_stud` int(10) UNSIGNED NOT NULL,
-  `skills` varchar(1000) NOT NULL,
-  `experience` varchar(1000) NOT NULL,
-  `additional` varchar(1000) NOT NULL
+  `skills` text NOT NULL,
+  `experience` text NOT NULL,
+  `additional` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -192,7 +204,7 @@ CREATE TABLE `student` (
   `id` int(10) UNSIGNED NOT NULL,
   `studygroup` int(10) UNSIGNED NOT NULL,
   `birthdate` date NOT NULL,
-  `invalid` varchar(255) NOT NULL
+  `invalid` text NOT NULL COMMENT 'ограничения по здоровью'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -211,7 +223,8 @@ INSERT INTO `student` (`id`, `studygroup`, `birthdate`, `invalid`) VALUES
 (13, 10, '1998-05-15', ''),
 (14, 8, '1996-01-14', ''),
 (15, 7, '1997-03-08', ''),
-(16, 8, '1997-11-29', '');
+(16, 8, '1997-11-29', ''),
+(26, 9, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -222,14 +235,14 @@ INSERT INTO `student` (`id`, `studygroup`, `birthdate`, `invalid`) VALUES
 CREATE TABLE `vacancy` (
   `id_vac` int(10) UNSIGNED NOT NULL,
   `id_pter` int(10) UNSIGNED NOT NULL,
-  `about` varchar(1000) NOT NULL,
+  `about` varchar(255) NOT NULL COMMENT 'название вакансии (ага, не удивляйтесь)',
   `practic` varchar(255) NOT NULL COMMENT 'вид деятельности',
   `start` date DEFAULT NULL COMMENT 'начало периода',
-  `finish` date DEFAULT NULL COMMENT 'конецц периода',
+  `finish` date DEFAULT NULL COMMENT 'конец периода',
   `invalid` text NOT NULL COMMENT 'условия для инвалидов',
   `logo` varchar(255) NOT NULL,
   `places` int(11) NOT NULL DEFAULT '1' COMMENT 'количество мест',
-  `privet` varchar(1000) NOT NULL COMMENT 'приветствуется'
+  `privet` text NOT NULL COMMENT 'описание вакансии (ага-ага)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -237,12 +250,11 @@ CREATE TABLE `vacancy` (
 --
 
 INSERT INTO `vacancy` (`id_vac`, `id_pter`, `about`, `practic`, `start`, `finish`, `invalid`, `logo`, `places`, `privet`) VALUES
-(1, 24, 'Программист 1С', '', '2018-07-25', '2018-08-09', '', 'logo-new.png', 5, ''),
-(2, 17, 'Инженер связи', '', '2030-12-20', '0000-00-00', '', 'IMG_8212.JPG', 3, ''),
+(1, 24, 'Программист 1С', 'вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1вид деятельности 1', '2018-07-25', '2018-08-09', 'условия для инвалидов 1', 'logo-new.png', 5, 'Познакомим и обучим вас управлению этим жёлтым \"самолётом\"'),
+(2, 17, 'Инженер связи', '', '2030-12-20', '0000-00-00', '', 'logo_rostelecom_v1.png', 3, ''),
 (3, 18, 'Помощник системного администратора', '', '2018-07-25', '2018-08-09', '', '1688139.png', 3, ''),
 (4, 19, 'Веб-программист', '', '2018-07-25', '2018-08-09', '', 'logo.png', 5, ''),
-(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', 'CORAL_logo1.png', 5, ''),
-(13, 17, 'тестируем лого', '', '0000-00-00', '0000-00-00', '', 'logo_rostelecom_v1.png', 1, '');
+(5, 21, '1С-программист', '', '2018-07-25', '2018-08-09', '', 'CORAL_logo1.png', 5, '');
 
 --
 -- Индексы сохранённых таблиц
@@ -283,6 +295,7 @@ ALTER TABLE `pterodactyl`
 -- Индексы таблицы `request`
 --
 ALTER TABLE `request`
+  ADD PRIMARY KEY (`id_vac`,`id_stud`),
   ADD KEY `id_vac` (`id_vac`),
   ADD KEY `id_stud` (`id_stud`);
 
@@ -320,12 +333,12 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT для таблицы `person`
 --
 ALTER TABLE `person`
-  MODIFY `id_person` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_person` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT для таблицы `vacancy`
 --
 ALTER TABLE `vacancy`
-  MODIFY `id_vac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_vac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
