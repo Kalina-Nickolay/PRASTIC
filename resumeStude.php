@@ -87,7 +87,7 @@
 			LEFT JOIN student ON person.id_person = student.id
 			LEFT JOIN groups ON student.studygroup = groups.id_group WHERE person.username = "'.$_SESSION['login'].'"');
 			$row = $stmt->fetch();
-			$id=$row_1['id'];
+			$id=$row['id'];
 			$group_student=$row['studygroup'];//Группа   birthdate
 			$name_sudent=$row['lastname'];//ФИО студента
 			$name_sudent.=' ' . $row['name'];
