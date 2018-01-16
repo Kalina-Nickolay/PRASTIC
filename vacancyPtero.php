@@ -27,7 +27,7 @@
 
 		?>
 		<div class="column small-6 medium-6 large-6" id="vac_<? echo $id_vac?>">
-			<div class="row" id="trunk" style="height:207px;" >
+			<div class="row" id="trunk" >
 				<div class="column small-4 medium-4 large-4" style="display: block; padding:10px;"><br>
 					
 					<?
@@ -64,10 +64,10 @@
 		?>
 		
 		<a href="vacancyAdd.php" class="column small-6 medium-6 large-6">
-			<div class="row" id="trunk" height="207px">
-				<div class="column small-12 medium-12 large-12">
-					<img src="images/on.png" width="150" style="display: block; margin-left: auto; margin-right: auto"></img>
-					<p4 style="margin-left:25%">Добавить вакансию</p4>
+			<div class="row" id="trunk">
+				<div class="column small-12 medium-12 large-12" style="text-align: center">
+					<img src="images/on.png" width="150" style="display: block; margin-top: 30; margin-left: auto; margin-right: auto"></img>
+					<p4>Добавить вакансию</p4>
 				</div>
 			</div>
 		</a>
