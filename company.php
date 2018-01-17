@@ -10,14 +10,14 @@
 		<?php
 		$stmt = $db->query('SELECT * FROM pterodactyl WHERE (SELECT COUNT(vacancy.id_pter) FROM vacancy WHERE vacancy.id_pter=pterodactyl.id)>0');
 
-		while ($row = $stmt->fetch())
+		while ($res = $stmt->fetch())
 		{
 		
-		$id = $row['id'];
-		$name_company=$row['name'];//Название компании:
-		$adds=$row['address'];//адрес:
-		$score=$row['sphere'];//Сфера:
-		$About_company=$row['about'];//о компании
+		$id = $res['id'];
+		$name_company=$res['name'];//Название компании:
+		$adds=$res['address'];//адрес:
+		$score=$res['sphere'];//Сфера:
+		$About_company=$res['about'];//о компании
 
 		if (strlen($score)>50)
 			$score = mb_substr($score, 0, 50, 'UTF-8').'...';
@@ -26,10 +26,11 @@
 			$About_company = mb_substr($About_company, 0, 50, 'UTF-8').'...';
 		
 		
-		$members=$db->query('SELECT COUNT(*) FROM vacancy WHERE id_pter = '.$id.'')->fetchColumn();
+		$members=$db->query('SELECT COUNT(*) FROM vacancy WHERE id_pter = '.$id)->fetchColumn();
+		
 		$idrew = rand(1, $members);
 		
-		$stmt2 = $db->query('SELECT * FROM vacancy WHERE id_pter='.$id.'');
+		$stmt2 = $db->query('SELECT * FROM vacancy WHERE id_pter='.$id);
 		
 		$ieee=0;
 		while ($row = $stmt2->fetch())
@@ -43,7 +44,7 @@
 	
 		?>
 		<a class="column small-6 medium-6 large-6"  href="company_detail.php?id=<? echo $id ?>">
-			<div <? if ($row['iscontract']==1) {?> class="row" <? } else { ?> class="row no-contract" <?}?> id="trunk">
+			<div <? if ($res['iscontract']==1) {?> class="row" <? } else { ?> class="row no-contract" <?}?> id="trunk">
 				
 				<div class="column small-4 medium-4 large-4" style="padding:10px;">
 					<br>
