@@ -25,14 +25,41 @@
 		if (strlen($About_company)>50)
 			$About_company = mb_substr($About_company, 0, 50, 'UTF-8').'...';
 		
+		
+		$members=$db->query('SELECT COUNT(*) FROM vacancy WHERE id_pter = '.$id.'')->fetchColumn();
+		$idrew = rand(1, $members);
+		
+		$stmt2 = $db->query('SELECT * FROM vacancy WHERE id_pter='.$id.'');
+		
+		$ieee=0;
+		while ($row = $stmt2->fetch())
+		{
+			$ieee++;
+			if ($ieee==$idrew)
+			{
+				$LOGOGOGO=$row['logo'];
+			}
+		}
+	
 		?>
 		<a class="column small-6 medium-6 large-6"  href="company_detail.php?id=<? echo $id ?>">
 			<div <? if ($row['iscontract']==1) {?> class="row" <? } else { ?> class="row no-contract" <?}?> id="trunk">
+				
 				<div class="column small-4 medium-4 large-4" style="padding:10px;">
 					<br>
-					<img src="images/7026.jpg"></img>
+					<?
+					if(!$LOGOGOGO)
+						echo'<img src="images/7026.jpg"></img> ';
+					else
+					{
+						
+					echo'<img src="files/logo/'.$id.'/'.$LOGOGOGO.'"></img> ';
+					}
+					?>
+					
 					<br>
 				</div>
+				
 
 				<div class="column small-8 medium-8 large-8" style="padding:10px;">
 					<p1 ><? echo $name_company ?></p1>
