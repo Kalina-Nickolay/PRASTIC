@@ -46,7 +46,7 @@
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
-								<input class="rectangle" name="places" placeholder="Мест" type="number" min="1" max="100" value="1" style="width:100%; margin-left:0;"></input>
+								<input class="rectangle" name="places" placeholder="Мест" type="number" min="1" max="100" value="10" style="width:100%; margin-left:0;"></input>
 							</div>	
 						</div>
 					

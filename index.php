@@ -21,39 +21,14 @@ if(isset($_POST['reg']))
 		$new_password = $_POST['new_password']; ;
 		$double_new_password =$_POST['double_new_password'];
 		
-		$sql="SELECT username FROM person WHERE username = '$login'";
-		$stmt = $db->query($sql);
-		$stmt->execute();
-		$row = $stmt->fetch();
-		$username=$row['username'];
-		
 		$last_password=md5($new_password);
 	
-		$sql="INSERT INTO person (lastname, name, fathername,username,password,email,telephone) 
-		VALUES ('$last_name', '$first_name', '$father_name', '$login', '$last_password', '$Email', '$number_telephone')";
+		$sql="INSERT INTO person (lastname, name, fathername, username, password, email, telephone) 
+		VALUES ('$last_name', '$first_name', '$father_name', '$login', '$last_password', '$Email','$number_telephone')";
 		$stmt = $db->query($sql);
-		$stmt->execute();
-		
-		//СЛЕДУЮЩИЕ НЕСКОЛЬКО СТРОК УДАЛЯЮ ПОВТОРНУЮ ЗАПИСЬ В ТАБЛИЦЕ PERSON. ОТКУДА ВТОРАЯ - ХЗ, ПОПУЛЯРНЫЙ БАГ
-		$sql="SELECT * FROM person ORDER BY id_person DESC LIMIT 1";
-		$stmt = $db->query($sql);
-		$stmt->execute();
-		$row = $stmt->fetch();
-		$id_delete=$row['id_person'];
-		
-		$stmt5 = $db->query("DELETE FROM `person`
-		WHERE id_person= '$id_delete'");
-		$stmt5->execute();
-		//ВСЁ. ПРИ НЕНАДОБНОСТИ - УДАЛИТЬ
-		$sql="SELECT * FROM person ORDER BY id_person DESC LIMIT 1";
-		$stmt = $db->query($sql);
-		$stmt->execute();
-		$row = $stmt->fetch();
-		$id=$row['id_person'];
 		
 		if($role=='pterodactyl')
 		{
-			
 			$name_company =$_POST['name_company'];
 			$address =$_POST['address'];
 			$sphere =$_POST['sphere'];
