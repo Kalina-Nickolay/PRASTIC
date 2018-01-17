@@ -109,7 +109,7 @@ if(isset($_POST['registration_one_step']))
 										<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:120%">
 								
 								
-											<input class="rectangle" required style="width:80%"  name="birthdate" placeholder="Дата рождения" type="text" ></input>
+											<input class="rectangle" required style="width:80%"  name="birthdate" placeholder="Дата рождения" type="date" ></input>
 											';
 											$stmt = $db->query('SELECT distinct studygroup
 												FROM groups

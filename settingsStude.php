@@ -144,8 +144,25 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								
 								<input class="rectangle" required style="width:40%" name="birth_date" placeholder="Дата рождения" value="'.$birth_date.'" type="text" ></input>
 								 
-								<input class="rectangle" required style="width:20%" name="study_group" placeholder="Группа" value="'.$study_group.'" type="text" ></input>
-								 
+								';
+								$stmt1 = $db->query('SELECT distinct studygroup
+									FROM groups
+									order by studygroup			
+								');
+								echo
+								'
+									<select form="settingsStude" class="rectangle" name="study_group" placeholder="Группа" style="width:25%">
+									<option>'.$study_group.'</option>
+								';
+								while ($row1 = $stmt1->fetch())
+								{
+									$study_group_1 = $row1['studygroup'];
+									echo
+									'
+										<option>'.$study_group_1.'</option>
+									';
+								}
+								echo'
 								<textarea form="settingsStude" class="rectangle" style="height:30%" name="invalid" placeholder="Инвалидам и людям с ограниченными возможностями, написать условия для прохождения практики" value="'.$invalid.'" type="text" >'.$invalid.'</textarea>
 								
 							</div>
