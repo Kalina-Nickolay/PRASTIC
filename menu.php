@@ -58,17 +58,38 @@
 
 <!-- выделение пунктов меню / косячненькое :с-->
 <script>
-/*$(function () {
+$(document).ready(function(){
+	/* говнокод пздц, простите :с */
 	var location = window.location.href;
-	var cur_url = location.split('/').pop();
 	
-	if(cur_url.search('_') != -1)
-		cur_url = cur_url.split('_').shift() + '.php';
-	
-	$('li').each(function () {
-		var link = $(this).find('a').attr('href');
-		if(cur_url == link) 
-			$(this).addClass('active');
-	});
-});*/
+
+	if (location.indexOf('vacancy.php')>-1 || location.indexOf('vacancy_detail.php')>-1) 
+		$('li').find('a[href*="vacancy.php"]').parent().addClass('active');
+	else if (location.indexOf('resume.php')>-1) 
+		$('li').find('a[href*="resume.php"]').parent().addClass('active');
+	else if (location.indexOf('company.php')>-1 || location.indexOf('company_detail.php')>-1) 
+		$('li').find('a[href*="company.php"]').parent().addClass('active');
+	else if (location.indexOf('group.php')>-1 || location.indexOf('group_students.php')>-1) 
+		$('li').find('a[href*="group.php"]').parent().addClass('active');
+	else if (location.indexOf('sample.php')>-1)
+		$('li').find('a[href*="sample.php"]').parent().addClass('active');
+	else if (location.indexOf('vacancyPtero.php')>-1 || location.indexOf('vacancyAdd.php')>-1 || location.indexOf('vacancyEdit.php')>-1) 
+		$('li').find('a[href*="vacancyPtero.php"]').parent().addClass('active'); 
+	else if (location.indexOf('bidPtero.php')>-1 ) 
+		$('li').find('a[href*="bidPtero.php"]').parent().addClass('active'); 
+	else if (location.indexOf('settingsPtero.php')>-1 ) 
+		$('li').find('a[href*="settingsPtero.php"]').parent().addClass('active'); 
+	else if (location.indexOf('resumeStude.php')>-1 ) 
+		$('li').find('a[href*="resumeStude.php"]').parent().addClass('active'); 
+	else if (location.indexOf('bid.php')>-1 ) 
+		$('li').find('a[href*="bid.php"]').parent().addClass('active');
+	else if (location.indexOf('settingsStude.php')>-1 ) 
+		$('li').find('a[href*="settingsStude.php"]').parent().addClass('active');  
+	else if (location.indexOf('group_admin.php')>-1 || location.indexOf('group_students_admin.php')>-1) 
+		$('li').find('a[href*="group_admin.php"]').parent().addClass('active');  
+	else if (location.indexOf('bidadmin.php')>-1) 
+		$('li').find('a[href*="bidadmin.php"]').parent().addClass('active'); 
+	else if (location.indexOf('settingsAdmin.php')>-1) 
+		$('li').find('a[href*="settingsAdmin.php"]').parent().addClass('active');
+});
 </script>
