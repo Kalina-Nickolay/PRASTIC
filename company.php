@@ -30,7 +30,7 @@
 		
 		$idrew = rand(1, $members);
 		
-		$stmt2 = $db->query('SELECT * FROM vacancy WHERE id_pter='.$id);
+		$stmt2 = $db->query('SELECT * FROM vacancy WHERE logo IS NOT NULL AND id_pter='.$id);
 		
 		$ieee=0;
 		while ($row = $stmt2->fetch())
@@ -49,13 +49,8 @@
 				<div class="column small-4 medium-4 large-4" style="padding:10px;">
 					<br>
 					<?
-					if(!$LOGOGOGO)
-						echo'<img src="images/7026.jpg"></img> ';
-					else
-					{
-						
-					echo'<img src="files/logo/'.$id.'/'.$LOGOGOGO.'"></img> ';
-					}
+					if($LOGOGOGO)
+						echo'<img src="files/logo/'.$id.'/'.$LOGOGOGO.'"></img> ';
 					?>
 					
 					<br>

@@ -133,9 +133,9 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								
 								<!-- <input class="rectangle" required name="study_group" placeholder="Группа" value="'.$study_group.'" type="text" ></input> -->
 								
-								<input class="rectangle" required name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
+								<input id="course" class="rectangle" required name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
 								
-								<input class="rectangle" required name="speciality" placeholder="Специальность" value="'.$speciality.'" type="text" ></input>
+								<input id="speciality" class="rectangle" required name="speciality" placeholder="Специальность" value="'.$speciality.'" type="text" ></input>
 								
 								<!-- <input class="rectangle" required name="birth_date" placeholder="Дата рождения" value="'.$birth_date.'" type="text" ></input>-->
 								
@@ -151,7 +151,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								');
 								echo
 								'
-									<select form="settingsStude" class="rectangle" name="study_group" placeholder="Группа" style="width:25%">
+									<select id="group" form="settingsStude" class="rectangle" name="study_group" placeholder="Группа" style="width:25%">
 									<option>'.$study_group.'</option>
 								';
 								while ($row1 = $stmt1->fetch())
@@ -191,3 +191,27 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 
 </body>	
 	
+<script>
+	$(document).ready(function(){
+		// изменение значения полей направления и курса при изменении селекта с группой
+		$("#group").change(function () {
+			var request_data = {
+	            "group":  $(this).val(), //выбранное решение практикодателя
+	        };
+	        $.ajax({
+	            url: "bd/settings_stud.php", 
+	            type: "POST", 
+	            data: 'jsonData=' + JSON.stringify(request_data), 
+	            success:function(response){
+	            	res=JSON.parse(response);
+                    $("#course").val(res.course);
+                    $("#speciality").val(res.speciality);
+	            }
+	            /*,
+	            error:function (xhr, ajaxOptions, thrownError){
+	                alert(thrownError);
+	            }*/
+	        });
+   		});
+	});
+</script>>
