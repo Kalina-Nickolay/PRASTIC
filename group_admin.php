@@ -33,17 +33,23 @@
 		
 		<div class="column small-2 medium-2 large-2">
 		<p2 style="float: right;">Школа
-		<select class="group-select" name="school"; style="width:55%">
+<select class="group-select" name="school" style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
 		$school = $row['school'];
+		if ($school == $shkola) {
 		echo
 		'
-		
+		<option selected>'.$school.'</option>';
+		}
+		else {
+		echo
+		'
 		<option>'.$school.'</option>';
 		}
-		;
+		}
+		
 		$stmt = $db->query('SELECT distinct kaf
 			FROM groups	
 			
@@ -53,18 +59,23 @@
 		<select>
 		</p2>
 		</div>
-
 		<div class="column small-4 medium-4 large-4">
-		<p2>Кафедра
+		<p2 style="float: right;">Кафедра
 		<select class="group-select" name="kaf"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
 		$kaf = $row['kaf'];
+		if ($kaf == $kafedra) {
 		echo
 		'
-		
-		<option >'.$kaf.'</option>';
+		<option selected>'.$kaf.'</option>';
+		}
+		else {
+		echo
+		'
+		<option>'.$kaf.'</option>';
+		}
 		}
 		;
 		echo
@@ -77,17 +88,23 @@
 		echo
 		'
 		</div>
-
 		<div class="column small-4 medium-4 large-4">
-		<p2>Специальность
+		<p2 style="float: right;">Специальность
 		<select class="group-select" name="speciality"; style="width:57%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
 		$speciality = $row['speciality'];
+		if ($speciality == $spec) {
 		echo
 		'
-		<option >'.$speciality.'</option>';
+		<option selected>'.$speciality.'</option>';
+		}
+		else {
+		echo
+		'
+		<option>'.$speciality.'</option>';
+		}
 		}
 		;
 		echo
@@ -105,15 +122,21 @@
 
 		<div class="row">
 		<div class="column small-2 medium-2 large-2">
-		<p2 style="padding-left: 10;">Курс
-		<select class="group-select" name="course"; style="width:55%">
+		<p2 style="padding-left: 10;">Курс <select class="group-select" name="course"; style="width:55%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
 		$course = $row['course'];
+		if ($course == $kyrs) {
+		echo
+		'
+		<option selected>'.$course.'</option>';
+		}
+		else {
 		echo
 		'
 		<option>'.$course.'</option>';
+		}
 		}
 		;
 		echo
@@ -127,17 +150,22 @@
 		echo
 		'
 		</div>
-
 		<div class="column small-4 medium-4 large-4">
-		<p2>Группа
-		<select class="group-select" name="studygroup"; style="width:75%">
+		<p2 style="">Группа <select class="group-select" name="studygroup"; style="width:75%">
 		<option></option>';
 		while ($row = $stmt->fetch())
 		{
 		$studygroup = $row['studygroup'];
+		if ($studygroup == $gruppa) {
+		echo
+		'
+		<option selected>'.$studygroup.'</option>';
+		}
+		else {
 		echo
 		'
 		<option>'.$studygroup.'</option>';
+		}
 		}
 		;
 		echo
@@ -154,17 +182,23 @@
 		'
 		</div>
 		<div class="column small-4 medium-4 large-4">
-		<p2>Руководитель
-		<select class="group-select" name="fio"; style="width:57%">';
+		<p2 style="float: right;">Руководитель <select class="group-select" name="fio"; style="width:57%">
+		<option></option>';
 		while ($row = $stmt->fetch())
 		{
-		$admin = $row['admin'];
-		if ($admin == $idadmin){
-		$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];};};
+		$fio = $row['lastname'] .' '. $row['name'] .' '. $row['fathername'];
+		if ($fio == $imya) {
+		echo
+		'
+		<option selected>'.$fio.'</option>';
+		}
+		else {
 		echo
 		'
 		<option>'.$fio.'</option>';
-		
+		}
+		}
+		;
 		echo
 		'
 		<select></p2>
