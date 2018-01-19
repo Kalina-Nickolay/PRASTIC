@@ -25,6 +25,72 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 		$birth_date = $_POST['birth_date'];
 		$invalid = $_POST['invalid'];
 		
+		$stmt = $db->query('SELECT * FROM person 
+		LEFT JOIN student ON person.id_person = student.id
+		LEFT JOIN groups ON student.studygroup = groups.id_group WHERE person.username = "'.$_SESSION['login'].'"');
+		$row = $stmt->fetch();
+		$report=$row['report'];
+		$diary=$row['diary'];
+		$feedback=$row['feedback'];
+		$direction=$row['direction'];
+		
+		
+		if (is_uploaded_file($_FILES['report_name']['tmp_name'])) 
+		{
+			$report=($_FILES['report_name']['name']);
+			$uploaddir = 'files/students/'.$_SESSION['id'].'/';
+			if (file_exists($uploaddir)) {
+			   $uploadfile = $uploaddir.basename($_FILES['report_name']['name']);
+			   copy($_FILES['report_name']['tmp_name'], $uploadfile);
+			} else {
+			   mkdir($uploaddir, 0700, true);
+			   $uploadfile = $uploaddir.basename($_FILES['report_name']['name']);
+			   copy($_FILES['report_name']['tmp_name'], $uploadfile);
+			}
+		}
+		
+		if (is_uploaded_file($_FILES['diary_name']['tmp_name'])) 
+		{
+			$diary=($_FILES['diary_name']['name']);
+			$uploaddir = 'files/students/'.$_SESSION['id'].'/';
+			if (file_exists($uploaddir)) {
+			   $uploadfile = $uploaddir.basename($_FILES['diary_name']['name']);
+			   copy($_FILES['diary_name']['tmp_name'], $uploadfile);
+			} else {
+			   mkdir($uploaddir, 0700, true);
+			   $uploadfile = $uploaddir.basename($_FILES['diary_name']['name']);
+			   copy($_FILES['diary_name']['tmp_name'], $uploadfile);
+			}
+		}
+		
+			if (is_uploaded_file($_FILES['feedback_name']['tmp_name'])) 
+		{
+				$feedback=($_FILES['feedback_name']['name']);
+			$uploaddir = 'files/students/'.$_SESSION['id'].'/';
+			if (file_exists($uploaddir)) {
+			   $uploadfile = $uploaddir.basename($_FILES['feedback_name']['name']);
+			   copy($_FILES['feedback_name']['tmp_name'], $uploadfile);
+			} else {
+			   mkdir($uploaddir, 0700, true);
+			   $uploadfile = $uploaddir.basename($_FILES['feedback_name']['name']);
+			   copy($_FILES['feedback_name']['tmp_name'], $uploadfile);
+			}
+		}
+		
+			if (is_uploaded_file($_FILES['direction_name']['tmp_name'])) 
+		{
+			$direction=($_FILES['direction_name']['name']);
+			$uploaddir = 'files/students/'.$_SESSION['id'].'/';
+			if (file_exists($uploaddir)) {
+			   $uploadfile = $uploaddir.basename($_FILES['direction_name']['name']);
+			   copy($_FILES['direction_name']['tmp_name'], $uploadfile);
+			} else {
+			   mkdir($uploaddir, 0700, true);
+			   $uploadfile = $uploaddir.basename($_FILES['direction_name']['name']);
+			   copy($_FILES['direction_name']['tmp_name'], $uploadfile);
+			}
+		}
+		
 		if($new_password==$double_new_password &&  isset($new_password))
 			$last_password=md5($new_password);
 		
@@ -53,7 +119,11 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 			$sql = "UPDATE student
 			SET student.studygroup = '$id_group',
 			student.birthdate = '$birth_date',
-			student.invalid = '$invalid'
+			student.invalid = '$invalid',
+			student.report = '$report',
+			student.diary = '$diary',
+			student.feedback ='$feedback',
+			student.direction ='$direction'
 			WHERE student.id = '$id'
 		";
 		$stmt = $db->prepare($sql);
@@ -94,6 +164,11 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 		$speciality = $row['speciality'];
 		$birth_date = $row['birthdate'];
 		$invalid = $row['invalid'];
+		
+		$report=$row['report'];
+		$diary=$row['diary'];
+		$feedback=$row['feedback'];
+		$direction=$row['direction'];
 		echo
 		'
 		<div class="column small-12 medium-12 large-12">
@@ -102,15 +177,13 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 				</div>
 				
 					<div class="column small-10 medium-10 large-10" style="background:white; padding:10px; padding-right:60px;">
-					<form action="settingsStude.php" method="POST" enctype="multipart/form-data" id="settingsStude">	<p5>Настройки</p5>
+					<form action="settingsStude.php" method="POST" enctype="multipart/form-data" id="settingsStude">	
+					<p5>Настройки</p5>
 					<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:80%">
 					
 				
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-4 medium-4 large-4"style="padding:0; margin:0;">
-							
-							
-								
 								<input  type="hidden" value="'.$id.'" name="id_stud"></input>
 								
 								<input class="rectangle" required name="last_name" placeholder="Фамилия" value="'.$last_name.'" type="text" ></input>
@@ -166,6 +239,150 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								<textarea form="settingsStude" class="rectangle" style="height:30%" name="invalid" placeholder="Инвалидам и людям с ограниченными возможностями, написать условия для прохождения практики" value="'.$invalid.'" type="text" >'.$invalid.'</textarea>
 								
 							</div>
+								<p5>Документы</p5>
+								<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:100%">
+					
+								
+								';
+								
+								if ($report)
+								{
+									echo
+									'									
+										<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+											<a href="files/students/'.$_SESSION['id'].'/'.$report.'" download>
+											'.$report.'
+											</a>
+										</div>
+										<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+											<input type="file" id="report_name" name="report_name" />
+										</div>
+										<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+											<p>&#10004</p>
+										</div>
+									';
+								}
+								else
+								{
+									echo
+									'
+									<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+									<p>Прикрепите отчёт о прохождении практики</p>	
+									</div>
+									<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+										<input type="file" id="report_name" name="report_name"/>
+									</div>
+									<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+										
+									</div>
+									';
+								}
+								
+								if ($diary)
+								{
+									echo
+									'									
+										<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+											<a href="files/students/'.$_SESSION['id'].'/'.$diary.'" download>
+											'.$diary.'
+											</a>
+										</div>
+										<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+											<input type="file" id="diary_name" name="diary_name" />
+										</div>
+										<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+											<p>&#10004</p>
+										</div>
+									';
+								}
+								else
+								{
+									echo
+									'
+									<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+									<p>Прикрепите дневник прохождения практики</p>	
+									</div>
+									<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+										<input type="file" id="diary_name" name="diary_name"/>
+									</div>
+									<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+										
+									</div>
+									';
+								}
+								
+								
+								if ($feedback)
+								{
+									echo
+									'									
+										<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+											<a href="files/students/'.$_SESSION['id'].'/'.$feedback.'" download>
+											'.$feedback.'
+											</a>
+										</div>
+										<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+											<input type="file" id="feedback_name" name="feedback_name" />
+										</div>
+										<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+											<p>&#10004</p>
+										</div>
+									';
+								}
+								else
+								{
+									echo
+									'
+									<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+									<p>Прикрепите отзыв руководителя</p>	
+									</div>
+									<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+										<input type="file" id="feedback_name" name="feedback_name" accept="files/report"/>
+									</div>
+									<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+										
+									</div>
+									';
+								}
+								
+								
+								if ($direction)
+								{
+									echo
+									'									
+										<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+											<a href="files/students/'.$_SESSION['id'].'/'.$direction.'" download>
+											'.$direction.'
+											</a>
+										</div>
+										<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+											<input type="file" id="direction_name" name="direction_name" />
+										</div>
+										<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+											<p>&#10004</p>
+										</div>
+									';
+								}
+								else
+								{
+									echo
+									'
+									<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+									<p>Прикрепите направление на практику</p>	
+									</div>
+									<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+										<input type="file" id="direction_name" name="direction_name" accept="files/report"/>
+									</div>
+									<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+										
+									</div>
+									';
+								}
+								
+								
+								echo'
+								
+									
 						</div>
 						<div style="text-align: center;">
 							<div style="display: inline-block;
@@ -191,6 +408,10 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 
 </body>	
 	
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+
+
+
 <script>
 	$(document).ready(function(){
 		// изменение значения полей направления и курса при изменении селекта с группой
@@ -214,4 +435,4 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 	        });
    		});
 	});
-</script>>
+</script>

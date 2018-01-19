@@ -62,7 +62,7 @@
 			echo'
 			<br>
 			<p2 style= "padding-left:10">Практика утверждена у '.$schet.' из '.$schetgrupp.' человек</p2>';
-			$stmt = $db->query('SELECT student.studygroup as idgr, person.lastname as lastname, person.name as name, person.fathername as fathername, groups.studygroup as studygroup, pterodactyl.name as place, vacancy.about as vacancy, groups.speciality as speciality, request.admin_agree as admin_agree
+			$stmt = $db->query('SELECT student.id, student.report, student.diary, student.feedback, student.direction, student.studygroup as idgr, person.lastname as lastname, person.name as name, person.fathername as fathername, groups.studygroup as studygroup, pterodactyl.name as place, vacancy.about as vacancy, groups.speciality as speciality, request.admin_agree as admin_agree
 			FROM student
 			left join person on student.id = person.id_person
 			left join groups on student.studygroup = groups.id_group
@@ -79,11 +79,16 @@
 						<th>Имя</th>
 						<th>Отчество</th>
 						<th>Место прохождения практики</th>
+						<th>Отчёт</th>
+						<th>Дневник</th>
+						<th>Характеристика</th>
+						<th>Направление</th>
 					</tr>
 				</thead>
 				<tbody>';
 				while ($row = $stmt->fetch())
 				{
+				$id_students=$row['id'];
 				$idgr = $row['idgr'];
 				$studygroup = $row['studygroup'];
 				$lastname = $row['lastname'];
@@ -91,6 +96,12 @@
 				$fathername = $row['fathername'];
 				$place = $row['place'];
 				$vacancy = $row['vacancy'];
+				
+				$report=$row['report'];
+				$diary=$row['diary'];
+				$feedback=$row['feedback'];
+				$direction=$row['direction'];
+				
 				if ($idg == $idgr){
 					echo'
 					<tr>
@@ -98,11 +109,21 @@
 						<td>'.$lastname.'</td>
 						<td>'.$name.'</td>
 						<td>'.$fathername.'</td>';
-						if ( $row['admin_agree'] == 1){
+						if ( $row['admin_agree'] == 1)
+						{
 						echo'
-						<td>'.'Компания: '.$place. '<br>'.' Вакансия: '.$vacancy.'</td>';}
-						else {echo'<td> </td>';};
-					echo'
+						<td>'.'Компания: '.$place. '<br>'.' Вакансия: '.$vacancy.'</td>';
+						}
+						else 
+						{
+							echo'<td> </td>';
+							};
+						echo'
+						<td><a href="files/students/'.$id_students.'/'.$report.'" download>'.$report.'</a></td>
+						<td><a href="files/students/'.$id_students.'/'.$diary.'" download>'.$diary.'</a></td>
+						<td><a href="files/students/'.$id_students.'/'.$feedback.'" download>'.$feedback.'</a></td>
+						<td><a href="files/students/'.$id_students.'/'.$direction.'" download>'.$direction.'</a></td>
+				
 					</tr>';
 					$i = $i +1;};
 					};
