@@ -31,7 +31,12 @@
 						
 						<div class="row" style="padding:0; margin:0;">
 							<div class="column small-6 medium-6 large-6" style="padding-left:0;">
-								<input class="rectangle" name="start" placeholder="С" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" style="width:100%; margin-left:0;" value="<? echo $res['start']?>"></input>
+								<input class="rectangle" name="start" placeholder="С" type="text" 
+									   onfocus="(this.type='date')" 
+									   onblur="if(this.value==''){this.type='text'}" 
+									   style="width:100%; margin-left:0;" 
+									   value="<? echo $res['start']?>">
+								</input>
 							</div>	
 							<div class="column small-6 medium-6 large-6" style="padding-right:0;">
 								<input class="rectangle" name="finish" placeholder="По" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" style="width:100%" value="<? echo $res['finish']?>"></input>

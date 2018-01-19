@@ -41,6 +41,7 @@
 
 							//это для списка вакансий для приглашения - в выпадающем списке выводятся вакансии, на которые ещё есть свободные места (не утверждённые админом)
 							$vac = $db->query("SELECT vacancy.id_vac AS id_vac, vacancy.about AS about FROM vacancy WHERE vacancy.id_pter = ".$_SESSION['id']." AND vacancy.places>(SELECT COUNT(request.id_vac) FROM request WHERE request.admin_agree=1 AND vacancy.id_vac=request.id_vac)");
+							$n_v = $vac -> rowCount(); // узнаём кол-во вакансий, на которые ещё есть места
 
 							// проверяем, есть ли у данного студента утверждённое место практики и отправлял ли уже практикодатель этому студенту своё приглашение
 							$stm = $db->prepare("SELECT id_stud FROM request WHERE id_stud=? AND (admin_agree=1 OR id_vac IN (SELECT id_vac FROM vacancy WHERE id_pter=?)) "); 
@@ -49,7 +50,10 @@
 
 							?>
 							<br>
-							<button name="<? echo $id.'submit' ?>" id="<? echo $id.$name_student /*в ид записываем ид студента и его имя*/?>" iddiv="box_invite" class="popup" type="submit" <? if ($res) {?> disabled <?}?> >Пригласить</button>
+							<button name="<? echo $id.'submit' ?>" 
+									id="<? echo $id.$name_student /*в ид записываем ид студента и его имя*/?>" 
+									iddiv="box_invite" class="popup" type="submit" 
+									<? /**/if ($res || $n_v==0) {?> disabled <?}?> /*если у практикодателя нет мест или у студента уже есть утв.место практики, то кнопка "пригласить" недоступна*/ >Пригласить</button>
 						<? } ?>
 					</div>
 				</div>

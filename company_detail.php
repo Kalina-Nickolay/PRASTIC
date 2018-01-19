@@ -23,7 +23,12 @@
 				<div class="column small-12 medium-12 large-12" style="background:white; padding:2% 5%;">
 					<p5><? echo $row['name'] ?></p5>
 					<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:50%">
-					<div style="float: left;"><a class="contract-href" <? if ($row['iscontract']==1) { ?> href="files/contract/<?echo $row['contract']?>"<?}?>>Договор о сотрудничестве</a> 
+					<div style="float: left;"><a class="contract-href" 
+						 <? if ($row['iscontract']==1) { ?> 
+						 	href="files/contract/<?echo $row['contract']?>"
+						 <?} else { ?>
+							style="display: none"
+						 <?}?> >Договор о сотрудничестве</a> 
 					</div>
 					<div style="float: right;"><p4 align="right">Вакансий:</p4>
 						<p4><? echo $n_v['num_vac'] ?></p4>

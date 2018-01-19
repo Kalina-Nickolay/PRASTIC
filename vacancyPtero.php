@@ -56,18 +56,15 @@
 				
 			</div>
 		</div>
-		
-		<?
-		
-		}
-
-		?>
-		
+		<?}?>
 		<a href="vacancyAdd.php" class="column small-6 medium-6 large-6">
 			<div class="row" id="trunk">
 				<div class="column small-12 medium-12 large-12" style="text-align: center">
+					<p id="add-vac">+</p>
+					<!--
 					<img src="images/on.png" width="150" style="display: block; margin-top: 30; margin-left: auto; margin-right: auto"></img>
-					<p4>Добавить вакансию</p4>
+				-->
+					<p2>Добавить вакансию</p2>
 				</div>
 			</div>
 		</a>
