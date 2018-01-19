@@ -220,6 +220,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 	            data: 'jsonData=' + JSON.stringify(request_data), 
 	            success:function(response){
 	            	res=JSON.parse(response);
+	            	$("#group").val(res.group);
                     $("#course").val(res.course);
                     $("#speciality").val(res.speciality);
 	            }
