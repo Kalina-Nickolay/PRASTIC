@@ -192,6 +192,10 @@ li {
 	border: 2px solid #BABABA;
 	}
 
+.rectangle[readonly] {
+  color:black !important;
+}
+
 .rectangle1{
 	border-radius: 0px;
 	border:4px;
@@ -285,5 +289,4 @@ select option{
     background-color: White;
     border-radius:0px;
     box-shadow: 0px 0px 10px #000;
->>>>>>> Stashed changes
 }

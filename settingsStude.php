@@ -133,9 +133,9 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								
 								<!-- <input class="rectangle" required name="study_group" placeholder="Группа" value="'.$study_group.'" type="text" ></input> -->
 								
-								<input id="course" class="rectangle" required name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
+								<input id="course" class="rectangle" readonly name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
 								
-								<input id="speciality" class="rectangle" required name="speciality" placeholder="Специальность" value="'.$speciality.'" type="text" ></input>
+								<input id="speciality" class="rectangle" readonly name="speciality" placeholder="Специальность" value="'.$speciality.'" type="text" ></input>
 								
 								<!-- <input class="rectangle" required name="birth_date" placeholder="Дата рождения" value="'.$birth_date.'" type="text" ></input>-->
 								
