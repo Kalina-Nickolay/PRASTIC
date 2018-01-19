@@ -94,6 +94,11 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 		$speciality = $row['speciality'];
 		$birth_date = $row['birthdate'];
 		$invalid = $row['invalid'];
+
+		$stm_spec = $db->query('SELECT distinct speciality
+									FROM groups
+									order by speciality			
+								');
 		echo
 		'
 		<div class="column small-12 medium-12 large-12">
@@ -133,9 +138,19 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								
 								<!-- <input class="rectangle" required name="study_group" placeholder="Группа" value="'.$study_group.'" type="text" ></input> -->
 								
-								<input id="course" class="rectangle" required name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
+								<input id="course" class="rectangle changer" required name="course" placeholder="Курс" value="'.$course.'" type="text" ></input>
 								
-								<input id="speciality" class="rectangle" required name="speciality" placeholder="Специальность" value="'.$speciality.'" type="text" ></input>
+								<select id="speciality" class="rectangle changer" required name="speciality" placeholder="Специальность">
+									<option>'.$speciality.'</option>';
+									while ($row1 = $stm_spec->fetch()) {
+										$speciality_1 = $row1['speciality'];
+										echo
+										'
+											<option>'.$speciality_1.'</option>
+										';
+									}
+								echo '
+								</select>
 								
 								<!-- <input class="rectangle" required name="birth_date" placeholder="Дата рождения" value="'.$birth_date.'" type="text" ></input>-->
 								
@@ -151,7 +166,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 								');
 								echo
 								'
-									<select id="group" form="settingsStude" class="rectangle" name="study_group" placeholder="Группа" style="width:25%">
+									<select id="group" form="settingsStude" class="rectangle changer" name="study_group" placeholder="Группа" style="width:25%">
 									<option>'.$study_group.'</option>
 								';
 								while ($row1 = $stmt1->fetch())
@@ -194,9 +209,10 @@ if (isset($_SESSION['role']) && $_SESSION['role']=="student") {
 <script>
 	$(document).ready(function(){
 		// изменение значения полей направления и курса при изменении селекта с группой
-		$("#group").change(function () {
+		$(".changer").change(function () {
 			var request_data = {
-	            "group":  $(this).val(), //выбранное решение практикодателя
+				"sender": $(this).attr('id'),
+	            "value":  $(this).val(), 
 	        };
 	        $.ajax({
 	            url: "bd/settings_stud.php", 

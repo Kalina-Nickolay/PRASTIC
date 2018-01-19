@@ -2,13 +2,22 @@
 	include ("../db.php"); 
 	$data = json_decode($_POST['jsonData']);
 
-	$group = $data->group;
+	$sender = $data->sender;
+	$value = $data->value;
 
-	$stm = $db->prepare("SELECT course, speciality FROM groups WHERE studygroup=?");
-	$stm -> execute(array($group));
-    $res = $stm->fetch();
+	if ($sender=="group") {
+		$stm = $db->prepare("SELECT course, speciality FROM groups WHERE studygroup=?");
+		$stm -> execute(array($group));
+	    $res = $stm->fetch();
+	}
 
-	$jsonn=array(   
+
+
+
+	
+
+	$jsonn=array( 
+		'group'=>  
         'course'=>$res['course'],
         'speciality'=>$res['speciality'],               
     );
