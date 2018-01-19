@@ -1,8 +1,6 @@
 <?include('search.php');?>
 
 <body>
-	<!--Поисковая строка+название+кнопка входа-->
-	
 	<!--Меню-->
 	<?php include('menu.php');?>
 	
@@ -29,6 +27,7 @@ if(isset($_POST['reg']))
 		
 		if($role=='pterodactyl')
 		{
+			$id = $db->lastInsertId();
 			$name_company =$_POST['name_company'];
 			$address =$_POST['address'];
 			$sphere =$_POST['sphere'];
@@ -43,12 +42,12 @@ if(isset($_POST['reg']))
 				$iscontract = 0;
 			}
 			
-			$sql = "INSERT INTO pterodactyl (id,name,address,sphere,about, iscontract,contract) VALUES ('$id', '$name_company','$address','$sphere','$about','$iscontract','$contract')";
+			$sql = "INSERT INTO pterodactyl (id,name,address,sphere,about, iscontract,contract) VALUES (:id, :name_company,:address,:sphere,:about,:iscontract,:contract)";
 				
 			$stmt = $db->prepare($sql);
-			$stmt->execute();
+			$stmt->execute(array(':id'=>$id, ':name_company'=>$name_company, ':address'=>$address, ':sphere'=>$sphere, ':about'=>$about, ':iscontract'=>$iscontract, ':contract'=>$contract));
 			
-			$upload_path = './files/contract/'; // Директория на сервере, в которую жахнем картинку
+			$upload_path = './files/contract/'; // Директория на сервере, в которую жахнем файл
 		
 			move_uploaded_file($_FILES['contract_url']['tmp_name'], $upload_path . basename($_FILES['contract_url']['name'])); // Перемещаем файл в желаемую директорию
 			echo
@@ -86,16 +85,17 @@ if(isset($_POST['reg']))
 			$stmt = $db->prepare($sql );
 			$stmt->execute();
 				
-			//$message = "Вы зарегистрировались на сайте поиска практик ДВФУ \r\n Ваш логин: " . $login . "\r\n Ваш пароль: " . $new_password ."\r\n Войдите по ссылке index.php";
-			//mail(''.$Email.'', 'RE: Регистрация на сайте поиска практик ДВФУ', $message);
+			
 			
 			echo
-	'
+			'
 				<div class="row">
 						<div class="large-12 medium-12 cell content-error">Регистрация завершена. Логин и пароль высланы на почту</div>
 						</div>
 			';
 		}
+		$message = "Вы зарегистрировались на сайте поиска практик ДВФУ \r\n Ваш логин: " . $login . "\r\n Ваш пароль: " . $new_password ."\r\n";
+			mail(''.$Email.'', 'RE: Регистрация на сайте поиска практик ДВФУ', $message);
 	}
 	
 ?>	
