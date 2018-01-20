@@ -34,19 +34,27 @@
 						<th>Имя</th>
 						<th>Отчество</th>
 						<th>Ограничения по инвалидности</th>
+						<th>Отчёт</th>
+						<th>Дневник</th>
+						<th>Характеристика</th>
+						<th>Направление</th>
 					</tr>
 				</thead>
 				<tbody>';
 				$num=1;
 				while ($row = $stmt->fetch())
 				{
+				$id_stud=$row['id'];
 				$idgr = $row['idgr'];
 				$studygroup = $row['studygroup'];
 				$lastname = $row['lastname'];
 				$name = $row['name'];
 				$fathername = $row['fathername'];
 				$invalid = $row['invalid'];
-				
+				$report=$row['report'];
+				$diary=$row['diary'];
+				$feedback=$row['feedback'];
+				$direction=$row['direction'];
 					echo'
 					<tr>
 						<td>'.$num.'</td>
@@ -54,6 +62,10 @@
 						<td>'.$name.'</td>
 						<td>'.$fathername.'</td>
 						<td>'.$invalid.'</td>
+						<td><a href="files/students/'.$id_stud.'/'.$report.'"></td>
+						<td>'.$diary.'</td>
+						<td>'.$feedback.'</td>
+						<td>'.$direction.'</td>
 					</tr>';
 				$num++;
 				};

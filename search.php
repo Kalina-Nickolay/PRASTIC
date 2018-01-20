@@ -8,6 +8,7 @@
 	<!--Заголовок сайта-->
 	<title>Практика ДВФУ</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style_slider.css">
 	<!--Стили скачанного меню сайта-->
 	<link rel="stylesheet" href="css/main_menu.css" type="text/css">
 	<!--Стили foundation для разметки и стандартных элементов-->
@@ -16,13 +17,21 @@
 	<link rel="stylesheet" href="css/app.css">
 	<!--Стили для главного меню--> 
 	<link rel="stylesheet" href="css/main_menu.css">
+	
+	
+	<meta name="author" content="Jake Rocheleau">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <link rel="shortcut icon" href="http://www.templatemonster.com/favicon.ico">
+  <link rel="icon" href="http://www.templatemonster.com/favicon.ico">
+	 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery.glide.min.js"></script>
 </head>
 
 <script src="js/jquery-3.2.1.min.js"></script>
 
 <div class="row" style="background:#FAFAFA">
 		<div class="column small-2 medium-2 large-2" >
-			<p id="site_caption">Практики</p>
+			<a href="index.php" id="site_caption">Практики</a>
 		</div>
 		<form class="column small-9 medium-9 large-9" id="search-form" action="vacancy.php" method="GET">
 			<div class="row">
