@@ -25,7 +25,7 @@
 					<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:50%">
 					<div style="float: left;"><a class="contract-href" 
 						 <? if ($row['iscontract']==1) { ?> 
-						 	href="files/contract/<?echo $row['contract']?>"
+						 	href="files/contract/<?echo $row['contract']?>" download
 						 <?} else { ?>
 							style="display: none"
 						 <?}?> >Договор о сотрудничестве</a> 

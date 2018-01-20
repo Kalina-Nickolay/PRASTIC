@@ -22,7 +22,22 @@ if(isset($_POST['update_ptero']))
 		$sphere=$_POST['sphere'];
 		$about=$_POST['about'];
 		$iscontract=$_POST['iscontract'];
-		$contract=$_POST['contract'];
+		
+		
+		if (is_uploaded_file($_FILES['contract_name']['tmp_name'])) 
+		{
+			
+			$contract=($_FILES['contract_name']['name']);
+			$uploaddir = 'files/contract/';
+			if (file_exists($uploaddir)) {
+			   $uploadfile = $uploaddir.basename($_FILES['contract_name']['name']);
+			   copy($_FILES['contract_name']['tmp_name'], $uploadfile);
+			} else {
+			   mkdir($uploaddir, 0700, true);
+			   $uploadfile = $uploaddir.basename($_FILES['contract_name']['name']);
+			   copy($_FILES['contract_name']['tmp_name'], $uploadfile);
+			}
+		}
 		
 		if($new_password==$double_new_password &&  isset($new_password))
 			$last_password=md5($new_password);
@@ -134,9 +149,43 @@ if(isset($_POST['update_ptero']))
 								 
 								<input class="rectangle" type="hidden" style="" name="iscontract" placeholder="Наличие договора о сотрудничестве с ДВФУ" value="'.$iscontract.'" type="text" ></input>
 
-								<input class="rectangle" style="" name="contract" placeholder="Ссылка на электронный вариант договора" value="'.$contract.'" type="text" ></input>
-								 
 							</div>
+								<p5>Документы</p5>
+								<hr style="border: none; background-color: #EF9C00; color: #EF9C00; height: 3px;  padding:0; margin:0; margin-top:-5px; margin-bottom:7px;  width:100%">
+								';
+								if ($contract)
+								{
+									echo
+									'									
+										<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+											<a href="files/contract/'.$contract.'" download>
+											'.$contract.'
+											</a>
+										</div>
+										<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+											<input type="file" id="contract_name" name="contract_name" />
+										</div>
+										<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+											<p>&#10004</p>
+										</div>
+									';
+								}
+								else
+								{
+									echo
+									'
+									<div class="column small-6 medium-6 large-6" style="padding:0; margin:0;">
+									<p>Прикрепите договор о сотрудничестве с ДВФУ</p>	
+									</div>
+									<div class="column small-5 medium-5 large-5" style="padding:0; margin:0;">
+										<input type="file" id="contract_name" name="contract_name"/>
+									</div>
+									<div class="column small-1 medium-1 large-1" style="padding:0; margin:0;">
+										
+									</div>
+									';
+								}
+							echo'
 						</div>
 						<div style="text-align: center;">
 							<div style="display: inline-block;
